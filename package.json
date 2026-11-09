@@ -1,0 +1,22 @@
+{
+  "name": "vajrapu-jobs",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vajrapu Jobs: the remote-job sprint's hub — 14-day plan, learning vault, applications tracker.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "node tests/api.test.mjs && node tests/ticks.test.mjs",
+    "test:page": "mkdir -p tests/out && node tests/page.test.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "unist-util-visit": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=20.3.0"
+  }
+}

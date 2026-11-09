@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import TaskDay from '../components/TaskDay.astro';
+import { PLAN } from '../tasks.config';
+
+const total = PLAN.reduce((a, d) => a + d.tasks.length, 0);
+---
+
+<Base title="Tasks" wide>
+  <div id="authNotice" class="notice" style="display:none"></div>
+  <div class="taskbar">
+    <div>
+      <h1>The 14-day sprint</h1>
+      <p class="muted">10 applications a day on one standard CV, inside the 09:00–12:00 block. Every task carries its steps, or links the note that does. Ticks sync across your devices.</p>
+    </div>
+    <div class="taskctl">
+      <div class="pwrap"><div class="pbar"><div class="pfill" data-overall-fill></div></div><span class="muted" data-overall-text>0/{total}</span></div>
+      <button class="btn" type="button" id="jumpToday">Jump to today</button>
+      <label class="muted remonly"><input type="checkbox" id="remainingOnly" /> remaining only</label>
+    </div>
+  </div>
+
+  {PLAN.map((d) => <TaskDay d={d} />)}
+
+  <script src="/tasks.js" is:inline defer></script>
+</Base>

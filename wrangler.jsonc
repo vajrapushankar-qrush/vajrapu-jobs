@@ -1,0 +1,42 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vajrapu-jobs",
+  "compatibility_date": "2026-09-10",
+
+  // The API (Applications + task ticks). Everything that is not /api/* is answered from the static build below.
+  "main": "src/worker.js",
+
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    // Send every request through the Worker; it hands non-API paths straight to the assets.
+    "run_worker_first": true
+  },
+
+  // The database for Applications and the task ticks. Create it (Storage & databases -> D1 ->
+  // create "jobs-db"), paste its Database ID here, and uncomment. Tables are created on first use.
+  // "d1_databases": [
+  //   { "binding": "DB", "database_name": "jobs-db", "database_id": "PASTE-DATABASE-ID-HERE" }
+  // ],
+
+  // Screenshots attached to an application's sources (optional; R2 bucket "jobs-files").
+  // Harmless if the bucket does not exist yet: the page hides the attach button until FILES is bound.
+  // "r2_buckets": [
+  //   { "binding": "FILES", "bucket_name": "jobs-files" }
+  // ],
+
+  // This file is the only place settings live: a deploy replaces whatever is in the dashboard's
+  // Variables list. None of these values is secret (the team domain and AUD are in the login URL).
+  "vars": {
+    // Hostname of the Access login page (same Zero Trust team as the other sites).
+    "ACCESS_TEAM_DOMAIN": "curly-wind-4b8f.cloudflareaccess.com",
+    // AUD tag from THIS Worker's Access tab (not the ops or RAMS one). Fill after step 3 of the README.
+    "ACCESS_AUD": "",
+    // The email that gets delete/import rights, and your Access login.
+    "SUPERUSER_EMAIL": "vajrapushankar@gmail.com"
+  },
+
+  "observability": { "enabled": true }
+}

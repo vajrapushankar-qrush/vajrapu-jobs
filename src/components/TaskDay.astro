@@ -1,0 +1,46 @@
+---
+// One day of the plan: header, progress counter, and the task rows.
+// Checkbox state is hydrated by /tasks.js from /api/ticks (shared across devices).
+import { SITE } from '../site.config';
+import { dayDate, dayLabel, type DayPlan } from '../tasks.config';
+
+interface Props {
+  d: DayPlan;
+  hidden?: boolean;
+}
+const { d, hidden = false } = Astro.props;
+const date = dayDate(SITE.startDate, d.day);
+const label = dayLabel(SITE.startDate, d.day);
+---
+
+<section class="day card" id={`d${String(d.day).padStart(2, '0')}`} data-day={d.day} data-date={date} hidden={hidden}>
+  <header class="dayhead">
+    <h2>
+      Day {d.day} <span class="muted">· {label} · {d.theme}</span>
+    </h2>
+    <span class="dprog muted" data-day-progress>0/{d.tasks.length}</span>
+  </header>
+  <ul class="tasks">
+    {d.tasks.map((t) => (
+      <li class="task" data-task-row>
+        <input type="checkbox" data-task={t.id} id={`t-${t.id}`} aria-label={t.title} />
+        <div class="tbody">
+          <label for={`t-${t.id}`}>{t.title}</label>
+          {t.mins && <span class="mins">{t.mins}m</span>}
+          {t.tag && <span class={`tag tg-${t.tag}`}>{t.tag}</span>}
+          {(t.steps?.length || t.note) && (
+            <details class="steps">
+              <summary>Steps</summary>
+              {t.steps?.length ? <ol>{t.steps.map((s) => <li>{s}</li>)}</ol> : null}
+              {t.note && (
+                <p class="notelink">
+                  <a href={t.note}>Full guide →</a>
+                </p>
+              )}
+            </details>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import TaskDay from '../components/TaskDay.astro';
+import { SITE, ROTATION, TARGETS, FRAME } from '../site.config';
+import { PLAN } from '../tasks.config';
+---
+
+<Base title="Today" wide>
+  <section class="hero">
+    <p class="eyebrow" id="clockline">Local time</p>
+    <h1 id="dayline">Loading…</h1>
+    <p class="muted" id="weekline"></p>
+    <div class="cta">
+      <a class="btn primary" href="/tasks/">Full 14-day plan</a>
+      <a class="btn" href="/crm/">Applications</a>
+      <a class="btn" href="/notes/">Notes</a>
+    </div>
+  </section>
+
+  <h2 class="section">The sprint's commitments</h2>
+  <div class="kpis" id="kpis"></div>
+  <script is:inline define:vars={{ targets: TARGETS }}>window.OPS_TARGETS = targets;</script>
+  <script src="/kpis.js" is:inline defer></script>
+
+  <h2 class="section">The day frame — every project, one budget</h2>
+  <div class="card frame">
+    {FRAME.map((f) => (
+      <div class="frow">
+        <span class="fslot">{f.slot}</span>
+        <span class="fwhat" class:list={[{ fjobs: f.tag === 'jobs' }]}>{f.what}</span>
+      </div>
+    ))}
+    <p class="fnote muted">
+      Each project plans only inside its block — this sprint owns 09:00–12:00 and nothing else.
+      Travel/festival day? Minimum viable day = Block A here + the RAMS inbox; mark it and move on.
+      <a href="/notes/plan/day-frame/">The frame, its rules, and the holiday mode →</a>
+    </p>
+  </div>
+
+  <div id="authNotice" class="notice" style="display:none"></div>
+
+  <div class="notice" id="carried" style="display:none"></div>
+
+  <h2 class="section">Today's tasks</h2>
+  <p class="muted" id="noToday" style="display:none">Today is outside the plan's dates. Open the <a href="/tasks/">full plan</a> — or move <code>startDate</code> in <code>src/site.config.ts</code>.</p>
+  {PLAN.map((d) => <TaskDay d={d} hidden />)}
+
+  <h2 class="section">Everything else</h2>
+  <div class="grid">
+    <a class="card tile" href="/tasks/"><h3>Tasks</h3><p>The 14-day sprint, day by day. Tick things off anywhere; it syncs.</p></a>
+    <a class="card tile" href="/crm/"><h3>Applications</h3><p>Every application with status, follow-up dates and one-tap copies of the notes and nudges.</p></a>
+    <a class="card tile" href="/notes/"><h3>Notes</h3><p>The vault: the standard CV, positioning, sourcing searches, STAR stories, the day frame.</p></a>
+    <a class="card tile" href="/notes/playbooks/linkedin-sourcing/"><h3>Saved searches</h3><p>The five LinkedIn searches and the board list for Block B, ready to run.</p></a>
+  </div>
+
+  <script is:inline define:vars={{ startDate: SITE.startDate, rotation: ROTATION, planDays: SITE.planDays }}>
+  (function () {
+    var start = new Date(startDate + 'T00:00:00');
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var diff = Math.round((today - start) / 86400000);
+    var dl = document.getElementById('dayline');
+    var wl = document.getElementById('weekline');
+    var fmt = function (d) { return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }); };
+
+    if (diff < 0) {
+      dl.textContent = 'Setup · ' + -diff + (diff === -1 ? ' day' : ' days') + ' to Day 1';
+      wl.textContent = fmt(today) + '. The sprint starts ' + fmt(start) + '.';
+    } else {
+      var day = diff + 1;
+      var week = Math.floor(diff / 7) + 1;
+      var rot = null;
+      for (var i = 0; i < rotation.length; i++) if (rotation[i].week === week) rot = rotation[i];
+      dl.textContent = day <= planDays ? 'Day ' + day + ' of ' + planDays + ' · Week ' + week : 'Day ' + day + ' · Week ' + week;
+      wl.textContent = fmt(today) + (rot ? '. This week: ' + rot.focus + ' — ' + rot.detail + '.' : '');
+    }
+
+    var clock = document.getElementById('clockline');
+    function tick() {
+      var t = new Date();
+      var ist = t.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+      var uk = t.toLocaleTimeString('en-GB', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit' });
+      var et = t.toLocaleTimeString('en-GB', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit' });
+      clock.textContent = 'IST ' + ist + ' · UK ' + uk + ' · US-ET ' + et;
+    }
+    tick();
+    setInterval(tick, 30000);
+  })();
+  </script>
+  <script src="/tasks.js" is:inline defer></script>
+</Base>

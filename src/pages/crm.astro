@@ -1,0 +1,8 @@
+---
+// The CRM is a self-contained app (src/crm.html) talking to /api/* (Pages Functions + D1).
+// Served verbatim at /crm/ so dev and production behave the same. The whole site sits behind
+// Cloudflare Access; the API verifies the Access token on every call (functions/api/_middleware.js).
+import html from '../crm.html?raw';
+---
+
+<Fragment set:html={html} />

@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials">
+<title>Applications · Vajrapu Jobs</title>
+<style>
+:root{--bg:#f2f6f5;--card:#ffffff;--ink:#15211f;--muted:#5d6d6a;--line:#d8e2e0;--soft:#e6eeec;--green:#0d9488;--green-soft:#d5ece9;--amber:#c47a16;--amber-soft:#f8e9d2;--blue:#2b6cb0;--blue-soft:#dce9f8;--red:#b4453c;--red-soft:#f6dcd9;--grey:#d3d7dc;--r:14px}
+@media (prefers-color-scheme:dark){:root{--bg:#101b1a;--card:#172321;--ink:#e9f1ef;--muted:#93a6a2;--line:#24332f;--soft:#1c2a27;--green:#3ec9b7;--green-soft:#133632;--amber:#dba53d;--amber-soft:#3b3020;--blue:#7aa6e0;--blue-soft:#1f2c3f;--red:#e07a70;--red-soft:#3d2320;--grey:#3a423e}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:0 0 80px}
+a{color:var(--green)}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:10px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
+.brand{font-weight:800;text-decoration:none;color:var(--ink);font-size:17px}
+.top nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.top nav a{text-decoration:none;color:var(--muted);font-weight:600;font-size:14px;padding:6px 10px;border-radius:999px}
+.top nav a.active{color:var(--green);background:var(--green-soft)}
+@media (max-width:520px){.top nav{margin-left:0;width:100%;gap:2px}.top nav a{padding:6px 8px;font-size:13px}}
+.wrap{max-width:1240px;margin:0 auto;padding:16px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.bar .grow{flex:1 1 220px}
+input,select,textarea,button{font:inherit}
+input[type=text],input[type=search],input[type=date],input[type=number],input[type=url],input[type=email],input[type=tel],select,textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+textarea{min-height:70px;resize:vertical}
+button{padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:600;cursor:pointer}
+button.primary{background:var(--green);border-color:var(--green);color:#fff}
+button.ghost{background:transparent}
+button.danger{color:var(--red)}
+button.small{padding:6px 10px;font-size:13px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13px;font-weight:600;cursor:pointer;color:var(--muted)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip b{font-weight:800}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:none;border-radius:0;background:var(--card)}
+.seg button.on{background:var(--green);color:#fff}
+.me{font-size:13px;color:var(--muted);margin-left:auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+/* list */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;background:var(--soft);position:sticky;top:52px}
+tr.row{cursor:pointer}
+tr.row:hover td{background:rgba(127,127,127,.05)}
+td .sub{font-size:12.5px;color:var(--muted)}
+td select{padding:5px 8px;border-radius:8px;width:auto;min-width:110px}
+td:nth-child(4),td:nth-child(5){white-space:nowrap}
+.due{color:var(--red);font-weight:700}
+.soon{color:var(--amber);font-weight:700}
+.tag{display:inline-block;padding:2px 7px;border-radius:6px;font-size:11.5px;font-weight:700;background:var(--soft);color:var(--muted)}
+.tag.web{background:var(--red-soft);color:var(--red)}.tag.web.dated{background:var(--amber-soft);color:var(--amber)}
+.tag.hold{background:var(--amber-soft);color:var(--amber)}
+.tag.new{background:var(--soft)}.tag.sent{background:var(--blue-soft);color:var(--blue)}.tag.replied{background:var(--amber-soft);color:var(--amber)}.tag.intake{background:var(--amber-soft);color:var(--amber)}.tag.client{background:var(--green-soft);color:var(--green)}.tag.lost{background:var(--red-soft);color:var(--red)}.tag.dnd{background:var(--red);color:#fff}
+.mood{font-size:15px;margin-right:4px;vertical-align:-1px}
+.person{display:grid;grid-template-columns:92px 1fr 1fr auto;gap:10px;align-items:end}.person label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 4px}
+@media (max-width:640px){.person{grid-template-columns:92px 1fr}.person>div:nth-child(3){grid-column:2}.person>div:nth-child(4){grid-column:1 / -1}}
+.moods{display:flex;gap:4px;flex-wrap:nowrap}.moods button{font-size:18px;line-height:1;padding:7px 7px;border-radius:10px;background:var(--soft);border:1px solid transparent;cursor:pointer}.moods button.on{border-color:var(--ink);background:var(--card)}.moods button:hover{border-color:var(--muted)}
+.empty{padding:40px 16px;text-align:center;color:var(--muted)}
+@media (max-width:760px){
+  table,thead,tbody,tr,td{display:block}
+  thead{display:none}
+  tr.row{border-bottom:1px solid var(--line);padding:10px 12px}
+  td{border:none;padding:3px 0}
+  td[data-k]::before{content:attr(data-k) " ";font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  th{position:static}
+}
+/* board */
+.board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(190px,1fr);gap:10px;overflow-x:auto;padding-bottom:8px}
+.col{background:var(--soft);border-radius:12px;padding:8px;min-height:200px;display:flex;flex-direction:column;gap:8px}
+.col.over{outline:2px dashed var(--green)}
+.col h3{margin:2px 4px 4px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:flex;justify-content:space-between}
+.kcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;cursor:grab}
+.kcard:active{cursor:grabbing}
+.kcard .t{font-weight:700}
+.kcard .m{font-size:12.5px;color:var(--muted);margin-top:2px}
+.kcard .f{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-top:8px}
+.kcard select{padding:4px 6px;font-size:12px;border-radius:8px;width:auto}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-start;justify-content:center;padding:20px 10px;overflow:auto;z-index:20}
+.modal.open{display:flex}
+.dialog{background:var(--card);border-radius:16px;width:min(760px,100%);padding:18px;border:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 4px}
+.field.wide{grid-column:1 / -1}
+.hint.under{display:block;font-size:11.5px;margin-top:4px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.actions .right{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.quick{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 2px}
+.dhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.dhead h2{margin:0;font-size:18px}
+.tabs{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tabs button{border:none;border-radius:0;background:var(--card);padding:7px 14px}
+.tabs button.on{background:var(--ink);color:var(--bg)}
+section.tab[hidden]{display:none}
+h3.sect{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+h3.sect:first-child{margin-top:0}
+h3.sect .hint{text-transform:none;letter-spacing:0;font-weight:500;margin-left:6px}
+.sendhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.btnlink{display:inline-block;padding:9px 14px;border-radius:10px;background:var(--green);color:#fff;font-weight:700;text-decoration:none}
+.btnlink.off{display:none}
+.btnlink.wa{background:#1f8f5a}
+.msg{border:1px solid var(--line);border-radius:12px;background:var(--soft);margin:8px 0}
+.msg .msghead,.msg summary{display:flex;align-items:center;gap:8px;padding:8px 10px;cursor:default}
+.msg summary{cursor:pointer;list-style:none}
+.msg summary::-webkit-details-marker{display:none}
+.msg summary::before{content:"▸";color:var(--muted);width:12px}
+.msg[open] summary::before{content:"▾"}
+.msg .msghead b,.msg summary b{font-size:13.5px}
+.msg .copy{margin-left:auto}
+.msg summary .copy + .copy{margin-left:0}
+.msg pre{margin:0;padding:10px 12px 12px;white-space:pre-wrap;word-break:break-word;font:14px/1.5 inherit;font-family:inherit;border-top:1px solid var(--line)}
+.msg.compact pre{padding:8px 12px 10px}
+.field.wide textarea[name=note]{min-height:48px}
+.tradeChips .chip{padding:4px 9px;font-size:12.5px}
+.addTrade{display:flex;gap:6px;margin-top:8px;max-width:360px}
+.addTrade input{flex:1}
+.locs{display:flex;flex-direction:column;gap:6px}
+.locrow{display:grid;grid-template-columns:1.2fr 1fr 1fr 34px;gap:6px;align-items:center;margin-bottom:8px}
+.locrow input[data-f=address],.locrow input[name=address]{grid-column:1 / 4}.locrow .x,.locrow .mainTag{grid-row:1 / 3;grid-column:4}
+.locrow .x{padding:6px 0;text-align:center;color:var(--muted);border-color:transparent;background:transparent}
+.locrow .x:hover{color:var(--red)}
+.locrow .mainTag{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);text-align:center}
+@media (max-width:640px){.locrow{grid-template-columns:1fr 1fr 34px}.locrow input[data-f=name],.locrow input[name=town],.locrow input[data-f=address],.locrow input[name=address]{grid-column:1 / 3}.locrow .x,.locrow .mainTag{grid-row:1 / 4;grid-column:3}}
+.locs + button{margin-top:6px}
+.notice{padding:14px 16px;border-radius:12px;background:var(--amber-soft);border:1px solid var(--amber);margin-bottom:12px;font-size:14px}
+.notice code{background:rgba(0,0,0,.06);padding:1px 5px;border-radius:5px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:12px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .3s;max-width:92vw;text-align:center;z-index:30}
+.toast.show{opacity:1}
+.stats{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:0 0 10px}
+.stats b{color:var(--ink)}
+.hint{font-size:12.5px;color:var(--muted)}
+.hint.off{display:none}
+.holdline{padding:9px 12px;border-radius:10px;background:var(--amber-soft);border:1px solid var(--amber);font-size:13.5px;margin-bottom:10px}
+.holdline.off{display:none}.holdline.dnd{background:var(--red-soft);border-color:var(--red)}
+.holdline.notice{background:var(--red-soft);border-color:var(--red)}
+.shots{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}.shot{width:150px;font-size:12px}.shot a.img{display:block;height:100px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--soft)}.shot img{width:100%;height:100%;object-fit:cover;object-position:top}.shot .m{color:var(--muted);display:flex;justify-content:space-between;gap:4px;margin-top:3px}.shot .x{border:none;background:none;color:var(--muted);cursor:pointer}.shotadd{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.shotadd input[type=text]{flex:1;min-width:160px;padding:7px 9px}
+a.change{color:var(--muted);font-size:12px;text-decoration:underline;margin-left:4px}a.change:hover{color:var(--ink)}
+.chips.reasons{margin-top:-4px;padding-left:10px;border-left:3px solid var(--amber)}.chips.reasons.off{display:none}.chips.reasons .chip{font-size:12.5px}
+.dirs{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}.dirrow{display:grid;grid-template-columns:2fr 1fr 140px auto 34px;gap:6px;align-items:center}.dirrow input[data-f=note]{grid-column:1 / 5}.dirrow .x{grid-row:1 / 3;grid-column:5;padding:6px 0;text-align:center;color:var(--muted);border-color:transparent;background:transparent}.dirrow .x:hover{color:var(--red)}
+@media (max-width:640px){.dirrow{grid-template-columns:1fr 1fr 34px}.dirrow input[data-f=name],.dirrow input[data-f=note]{grid-column:1 / 3}.dirrow .x{grid-row:1 / 5;grid-column:3}}
+.srcs{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}.srcrow{display:grid;grid-template-columns:150px 2fr 1.2fr 120px 34px;gap:6px;align-items:center}.srcrow input[data-f=note]{grid-column:1 / 5}.srcrow .x{grid-row:1 / 3;grid-column:5;padding:6px 0;text-align:center;color:var(--muted);border-color:transparent;background:transparent}.srcrow .x:hover{color:var(--red)}
+@media (max-width:640px){.srcrow{grid-template-columns:1fr 1fr 34px}.srcrow input[data-f=url],.srcrow input[data-f=note]{grid-column:1 / 3}.srcrow .x{grid-row:1 / 5;grid-column:3}}
+@media (max-width:760px){#chips,.chips.reasons{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}#chips::-webkit-scrollbar,.chips.reasons::-webkit-scrollbar{display:none}#chips .chip,.chips.reasons .chip{white-space:nowrap;flex:0 0 auto}}
+.dup{margin-top:6px;font-size:13px;color:var(--amber)}.dup a{color:inherit;font-weight:600}.dup.off{display:none}
+.withcopy{position:relative}
+.withcopy input{padding-right:38px}
+.fcopy{position:absolute;right:4px;top:50%;transform:translateY(-50%);padding:6px;border:none;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;line-height:0}
+.fcopy:hover{color:var(--ink);background:var(--soft)}
+.withcopy.two input{padding-right:68px}
+.fopen{position:absolute;right:34px;top:50%;transform:translateY(-50%);padding:6px;border:none;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;line-height:0}
+.fopen:hover{color:var(--ink);background:var(--soft)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/">Vajrapu Jobs</a>
+  <nav aria-label="Main">
+    <a href="/">Today</a><a href="/tasks/">Tasks</a><a href="/notes/">Notes</a><a class="active" href="/crm/">Applications</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div id="authNotice" class="notice" style="display:none"></div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="bar">
+    <input class="grow" type="search" id="q" placeholder="Search company, role, recruiter, note…" autocomplete="off">
+    <div class="seg" id="viewSeg"><button class="on" data-view="list" type="button">List</button><button data-view="board" type="button">Board</button></div>
+    <select id="tradeFilter" style="width:auto" aria-label="Filter by segment"><option value="">All segments</option></select>
+    <select id="sort" style="width:auto"><option value="updated">Recently updated</option><option value="company">Company A–Z</option><option value="due">Follow-up due</option><option value="created">Newest first</option></select>
+    <button class="primary" id="addBtn" type="button">+ Add application</button>
+  </div>
+  <div class="bar">
+    <div class="chips" id="chips"></div>
+    <div class="chips reasons off" id="holdChipsBar" title="Why they are on hold"></div>
+    <button class="small ghost" id="dueBtn" type="button">Follow-ups due</button>
+    <button class="small ghost" id="webBtn" type="button" title="Applications whose posting link went stale: closed, broken or redirecting">Stale links</button>
+    <span class="me" id="me"></span>
+  </div>
+
+  <div id="listView" class="card">
+    <table>
+      <thead><tr><th>Company</th><th>Contact</th><th>Status</th><th>Applied</th><th>Follow-up</th><th>Note</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="emptyList" style="display:none">Nothing here yet. Add an application, or import a CSV.</div>
+  </div>
+
+  <div id="boardView" class="board" style="display:none"></div>
+
+  <div class="bar" style="margin-top:12px">
+    <button class="small" id="importBtn" type="button">Import CSV</button>
+    <input type="file" id="importFile" accept=".csv,text/csv" style="display:none">
+    <a class="small" id="exportLink" href="/api/prospects?format=csv"><button class="small" type="button">Export CSV</button></a>
+    <span class="hint">Import takes an applications sheet or an export; duplicates by company and role are skipped.</span>
+  </div>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <form class="dialog" id="form" autocomplete="off" novalidate>
+    <div class="dhead">
+      <h2 id="formTitle">Add application</h2>
+      <div class="tabs" id="tabs" role="tablist">
+        <button type="button" role="tab" data-tab="details">Details</button>
+        <button type="button" role="tab" data-tab="send">Send</button>
+        <button type="button" role="tab" data-tab="legal">Legal</button>
+        <button type="button" role="tab" data-tab="sources">Other</button>
+      </div>
+    </div>
+    <div class="holdline off" id="holdLine"></div>
+
+    <section class="tab" data-tab="send" hidden>
+      <div class="sendhead">
+        <a id="openSite" class="btnlink" href="#" target="_blank" rel="noopener">Open the job posting ↗</a>
+        <a id="openWa" class="btnlink wa off" href="#" target="_blank" rel="noopener">Open WhatsApp ↗</a>
+        <span class="hint off" id="waHint">their link opens the chat; the message can't be pre-filled, so use Copy below</span>
+        <span class="hint" id="sendContact"></span>
+      </div>
+      <div class="msg compact">
+        <div class="msghead"><b>Opener — LinkedIn connect note (recruiter / hiring manager)</b><button class="small copy" type="button" data-copy="jobType">Copy</button></div>
+        <pre id="m_jobType"></pre>
+      </div>
+      <div class="field wide"><label id="noteLabel">Note about the role (kept on the record; not in the messages for now)</label><textarea name="note" placeholder="JD highlights, who referred, salary band, anything worth remembering"></textarea></div>
+      <div class="msg">
+        <div class="msghead"><b>Application note — the “why me” box</b><button class="small copy" type="button" data-copy="form">Copy</button></div>
+        <pre id="m_form"></pre>
+      </div>
+      <details class="msg" id="d_wa"><summary><b>WhatsApp to the recruiter</b> <span class="hint">common with Indian agencies</span><button class="small copy" type="button" data-copy="wa">Copy</button></summary><pre id="m_wa"></pre></details>
+      <details class="msg" id="d_waNudge"><summary><b>WhatsApp nudge</b> <span class="hint">the Day-3 version</span><button class="small copy" type="button" data-copy="waNudge">Copy</button></summary><pre id="m_waNudge"></pre></details>
+      <details class="msg" id="d_email"><summary><b>Email after applying</b> <span class="hint">attach the standard CV</span><button class="small copy" type="button" data-copy="email">Copy</button></summary><pre id="m_email"></pre></details>
+      <details class="msg" id="d_fu1"><summary><b>Day-3 follow-up</b><button class="small copy" type="button" data-copy="fu1">Copy</button></summary><pre id="m_fu1"></pre></details>
+      <details class="msg" id="d_fu2"><summary><b>Day-7 follow-up</b> <span class="hint">the last one</span><button class="small copy" type="button" data-copy="fu2">Copy</button></summary><pre id="m_fu2"></pre></details>
+      <details class="msg" id="d_reply"><summary><b>Reply when they come back</b> <span class="hint">two slots; attach <code id="m_sample"></code></span><button class="small copy" type="button" data-copy="reply">Copy</button><button class="small copy" type="button" data-copy="sample">Copy filename</button></summary><pre id="m_reply"></pre></details>
+
+      <h3 class="sect">Where it stands</h3>
+      <div class="grid">
+        <div class="field"><label>Status</label><select name="status" id="statusSel"></select><input type="hidden" name="hold_reason"></div>
+        <div class="field"><label>Channel</label><select name="channel"><option value="form">Job portal</option><option value="email">Email</option><option value="phone">Phone</option><option value="whatsapp">WhatsApp</option><option value="referral">Referral</option></select></div>
+        <div class="field"><label>Applied on</label><input type="date" name="sent_at"></div>
+        <div class="field"><label>Follow-up due</label><input type="date" name="followup_due"></div>
+        <div class="field"><label>Last contact</label><input type="date" name="last_contact"></div>
+        <div class="field"><label>Offer CTC (₹ lakh / yr)</label><input type="number" name="value_gbp" min="0" step="1"></div>
+      </div>
+      <div class="quick" id="quick">
+        <button class="small" type="button" data-q="sent">Applied today</button>
+        <button class="small" type="button" data-q="replied">Replied today</button>
+      </div>
+    </section>
+
+    <section class="tab" data-tab="details">
+      <h3 class="sect">Company</h3>
+      <div class="grid">
+        <div class="field wide"><label>Company *</label><input type="text" name="company"><div class="dup off" id="dupHint"></div></div>
+        <div class="field"><label>Hiring side</label><select name="ltd"><option value="1">Direct employer</option><option value="0">Agency / consultancy</option></select></div>
+        <div class="field"><label>Source</label><input type="text" name="region" placeholder="LinkedIn / Remotive / shortlist / referral"></div>
+      </div>
+      <h3 class="sect">Contact</h3>
+      <div class="grid">
+        <div class="field wide"><label>Job posting / application URL</label><div class="withcopy two"><input type="text" name="contact_form_url" placeholder="example.com/contact"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field wide person"><div><label>Title</label><select name="title"><option value=""></option><option>Mr</option><option>Mrs</option><option>Ms</option><option>Miss</option><option>Dr</option></select></div><div><label>First name</label><input type="text" name="first_name"></div><div><label>Last name</label><input type="text" name="last_name"></div><div><label>How they came across</label><div class="moods" id="moods"></div><input type="hidden" name="mood"></div></div>
+        <div class="field"><label>Email</label><div class="withcopy"><input type="email" name="email"><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field"><label>Website</label><div class="withcopy two"><input type="text" name="website" placeholder="example.com"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field"><label>WhatsApp: number or their link</label><div class="withcopy"><input type="text" name="whatsapp" placeholder="07778 869402 or wa.me/message/…" autocomplete="off"><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div><span class="hint under">only if they publish one</span></div>
+        <div class="field"><label>Posting status</label><select name="website_status"><option value="">Not checked</option><option value="ok">Live</option><option value="dated">Old posting (14d+)</option><option value="expired">Closed / filled</option><option value="broken">Link broken</option><option value="redirect">Redirects elsewhere</option><option value="none">No link</option></select></div>
+      </div>
+      <h3 class="sect">Segment <span class="hint">bucket (P1/P2/P3) + role family — tick all that apply</span></h3>
+      <div class="chips tradeChips" id="tradeChips"></div>
+      <div class="addTrade"><input type="text" id="tradeOther" placeholder="Another segment…" autocomplete="off"><button class="small" type="button" id="tradeAdd">Add</button></div>
+      <input type="hidden" name="trade">
+      <h3 class="sect">Role <span class="hint">title · recruiter phone · mobile; the location / timezone note goes below.</span></h3>
+      <div class="locs" id="locs">
+        <div class="locrow"><input type="text" name="town" placeholder="Role title (e.g. Forward Deployed Engineer)" autocomplete="off"><input type="tel" name="phone" placeholder="Phone"><input type="tel" name="mobile" placeholder="Mobile"><input type="text" name="address" placeholder="Location note (Remote — India OK · US hours…)"><span class="mainTag">main</span></div>
+      </div>
+      <button class="small ghost" type="button" id="addLoc">+ Add another role here</button>
+    </section>
+
+    <section class="tab" data-tab="legal" hidden>
+      <h3 class="sect">Companies House <span class="hint">the register entry, as published. Names and roles only: no dates of birth here.</span></h3>
+      <div class="grid">
+        <div class="field wide"><label>Companies House</label><div class="withcopy two"><input type="text" data-link="companies_house" placeholder="company number or the find-and-update link" autocomplete="off"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field wide"><label>Registered name (if it differs from the trading name)</label><input type="text" data-legal="legal_name" placeholder="REGAL ROOFING (LEEDS) LTD"></div>
+        <div class="field"><label>Status</label><select data-legal="status"><option value="">Not checked</option><option value="active">Active</option><option value="dormant">Dormant</option><option value="liquidation">In liquidation / administration</option><option value="dissolved">Dissolved</option><option value="other">Other</option></select></div>
+        <div class="field"><label>Incorporated on</label><input type="date" data-legal="incorporated"></div>
+        <div class="field"><label>SIC code</label><input type="text" data-legal="sic" placeholder="43910 Roofing activities"></div>
+        <div class="field wide"><label>Registered office</label><input type="text" data-legal="registered_office" placeholder="often an accountant's address"></div>
+      </div>
+      <h3 class="sect">Directors <span class="hint">from the People tab of the register. "Use as contact" puts the name on Details.</span></h3>
+      <div class="dirs" id="dirs"></div><datalist id="dirRoles"><option value="Director"><option value="Secretary"><option value="Person with significant control"><option value="Owner (sole trader)"></datalist>
+      <button class="small ghost" type="button" id="addDir">+ Add director</button>
+    </section>
+
+    <section class="tab" data-tab="sources" hidden>
+      <h3 class="sect">Social &amp; links <span class="hint">what they publish elsewhere; not used in any message, kept for later</span></h3>
+      <div class="grid" id="socialGrid">
+        <div class="field"><label>Facebook page</label><div class="withcopy two"><input type="text" data-link="facebook" placeholder="facebook.com/…" autocomplete="off"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field"><label>Instagram</label><div class="withcopy two"><input type="text" data-link="instagram" placeholder="instagram.com/…" autocomplete="off"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field"><label>LinkedIn company</label><div class="withcopy two"><input type="text" data-link="linkedin" placeholder="linkedin.com/company/…" autocomplete="off"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field"><label>LinkedIn person (owner / director)</label><div class="withcopy two"><input type="text" data-link="linkedin_person" placeholder="linkedin.com/in/…" autocomplete="off"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field"><label>X / Twitter</label><div class="withcopy two"><input type="text" data-link="x" placeholder="x.com/…" autocomplete="off"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field"><label>YouTube</label><div class="withcopy two"><input type="text" data-link="youtube" placeholder="youtube.com/@…" autocomplete="off"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field"><label>TikTok</label><div class="withcopy two"><input type="text" data-link="tiktok" placeholder="tiktok.com/@…" autocomplete="off"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field wide"><label>Google Business / Maps listing</label><div class="withcopy two"><input type="text" data-link="google" placeholder="maps link or share link" autocomplete="off"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+        <div class="field"><label>Checkatrade / Trustatrader profile</label><div class="withcopy two"><input type="text" data-link="checkatrade" placeholder="checkatrade.com/trades/…" autocomplete="off"><button type="button" class="fopen" title="Open in a new tab" aria-label="Open this link in a new tab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></button><button type="button" class="fcopy" title="Copy" aria-label="Copy this field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div></div>
+      </div>
+      <h3 class="sect">Where the details came from <span class="hint">one row per place you found something; the date is filled in for you</span></h3>
+      <div class="srcs" id="srcs"></div>
+      <button class="small ghost" type="button" id="addSrc">+ Add source</button>
+      <h3 class="sect">Screenshots <span class="hint">for the special cases: the page as you saw it, with the date. Shrunk before upload.</span></h3>
+      <div class="shots" id="shots"><span class="hint">Save the record first.</span></div>
+      <div class="shotadd" id="shotAdd"><input type="file" id="shotFile" accept="image/*,.pdf"><input type="text" id="shotLabel" placeholder="What it shows (optional): contact page with the notice"><button class="small" type="button" id="shotBtn">Attach</button></div>
+      <h3 class="sect">Their contact notice <span class="hint">quote any "no marketing / no sales enquiries" wording from their site, with where it is</span></h3>
+      <div class="field wide"><textarea name="notice" placeholder='e.g. contact page: "Please do not use this form for marketing or sales enquiries"'></textarea></div>
+      <p class="hint">A notice like that is an objection to marketing. One message to a published generic address (info@) with a clear opt-out is defensible; a second send after a notice is not, and a named person&#39;s address after a notice is not. Keep the source rows: they are the answer to "where did you get my details?".</p>
+    </section>
+
+    <div class="actions">
+      <button class="primary" type="submit" id="saveBtn">Save</button>
+      <button class="ghost" type="button" id="cancelBtn">Cancel</button>
+      <div class="right">
+        <span class="hint" id="metaLine"></span>
+        <button class="danger ghost" type="button" id="deleteBtn" style="display:none">Delete</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal" id="holdModal" role="dialog" aria-modal="true" style="z-index:25">
+  <div class="dialog" style="width:min(560px,100%)">
+    <h2 id="holdTitle" style="margin:0 0 10px;font-size:17px">What's blocking this one right now?</h2>
+    <div class="chips tradeChips" id="holdChips" style="margin-bottom:8px"></div>
+    <textarea id="holdReason" placeholder="In a few words, so you don't try the same door twice"></textarea>
+    <div class="field" style="margin-top:10px"><label>Try next</label><select id="holdNext"></select></div>
+    <p class="hint" style="margin:8px 0 0">The retry date goes into Follow-up due, so it comes back in "Follow-ups due" when it's time. Until then it stays out of Found.</p>
+    <div class="actions"><button class="primary" type="button" id="holdOk">Put on hold</button><button class="ghost" type="button" id="holdCancel">Cancel</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="/messages.js"></script>
+<script>
+(function () {
+  // Your identity for the copy buttons. The WhatsApp number is yours to fill in.
+  // The wording of every message lives in /messages.js (also used by tools/messages.mjs).
+  var CONFIG = window.OPS_CONFIG;
+  var buildMessages = window.OPS_MESSAGES;
+  if (CONFIG.firstLine) { document.getElementById('noteLabel').textContent = 'First line about them (it opens every message; one honest line from their site)'; document.querySelector('textarea[name=note]').placeholder = '40-person packaging unit in Hosur, exports to the Gulf'; }
+  var STATUSES = [
+    ['new', 'Found'], ['sent', 'Applied'], ['replied', 'Replied'], ['intake', 'Interviewing'], ['client', 'Offer'], ['hold', 'On hold'], ['lost', 'Rejected / closed'], ['dnd', 'Do not contact'],
+  ];
+  // the hold popup: quick reasons, and what to try next (which also sets the channel and the retry date)
+  var HOLD_REASONS = ['Posting closed before I applied', 'Needs US/EU work authorization', 'Referral required first', 'Assessment pending', 'Recruiter gone quiet', 'Asked to come back later'];
+  // reasons that mean "don't try the same door again": the retry defaults to email or phone
+  var HOLD_SKIP_FORM = /closed|authorization/i;
+  var HOLD_NEXT = [['', 'Nothing planned yet'], ['whatsapp', 'WhatsApp, next working day'], ['phone', 'Phone, next working day'], ['email', 'Email, next working day'], ['form', 'The portal again, next working day']];
+  var MOODS = [['', '🙂', 'Not met yet'], ['warm', '😊', 'Friendly'], ['neutral', '😐', 'Neutral'], ['cold', '🥶', 'Cold / not interested'], ['hostile', '💣', 'Difficult: handle with care']];
+  var MOOD_ICON = {}; MOODS.forEach(function (m) { if (m[0]) MOOD_ICON[m[0]] = m[1]; });
+  function moodTag(p) { return MOOD_ICON[p.mood] ? '<span class="mood" title="' + esc(MOODS.filter(function (m) { return m[0] === p.mood; })[0][2]) + '">' + MOOD_ICON[p.mood] + '</span>' : ''; }
+  var LABEL = {}; STATUSES.forEach(function (s) { LABEL[s[0]] = s[1]; });
+  var LABELC = { form: 'form', email: 'email', phone: 'phone', whatsapp: 'WhatsApp', referral: 'referral' };
+
+  var state = { items: [], me: null, view: 'list', q: '', status: '', trade: '', holdReason: '', due: false, web: false, sort: 'updated', editing: null };
+  var WEB_LABEL = { dated: 'old posting', expired: 'posting closed', broken: 'link broken', redirect: 'redirects', none: 'no link' };
+  var DEFAULT_TRADES = ['P1 FDE + SAP/finance', 'P2 FDE India-remote', 'P3 restricted long shot', 'AI Architect', 'SAP ecosystem AI', 'Solutions/engagement architect', 'Recruiter / referral'];
+  var $ = function (id) { return document.getElementById(id); };
+  // Dates are local (your clock), not UTC: toISOString() would give yesterday's date in the morning east of Greenwich
+  function localIso(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  var todayIso = localIso(new Date());
+
+  function toast(msg) { var t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove('show'); }, 2600); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function fmtDate(iso) { if (!iso) return ''; var d = new Date(iso + 'T00:00:00'); return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }); }
+  function daysSince(iso) { if (!iso) return null; return Math.round((new Date(todayIso + 'T00:00:00') - new Date(iso + 'T00:00:00')) / 86400000); }
+  function isDue(p) { return (p.status === 'sent' || p.status === 'hold') && p.followup_due && p.followup_due <= todayIso; }
+  function nextWorkingDay(fromIso, minIso) {
+    var d = new Date((fromIso || todayIso) + 'T00:00:00'); d.setDate(d.getDate() + 1);
+    while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+    var iso = localIso(d);
+    return minIso && iso < minIso ? minIso : iso;
+  }
+  function holdDate(next) {
+    return next ? nextWorkingDay(todayIso) : '';
+  }
+  function isWebLead(p) { return !!WEB_LABEL[p.website_status]; }
+  function webTag(p) { return isWebLead(p) ? ' <span class="tag web ' + esc(p.website_status) + '">' + esc(WEB_LABEL[p.website_status]) + '</span>' : ''; }
+  function trades(p) { return String(p.trade || '').split(',').map(function (t) { return t.trim(); }).filter(Boolean); }
+  function hasTrade(p, t) { var k = t.toLowerCase(); return trades(p).some(function (x) { return x.toLowerCase() === k; }); }
+  // the tick-list: the server's list, plus anything already used on a record, plus anything added in this form
+  function knownTrades(extra) {
+    var out = [], seen = {};
+    var add = function (t) { t = String(t || '').trim(); if (!t || seen[t.toLowerCase()]) return; seen[t.toLowerCase()] = 1; out.push(t); };
+    ((state.me && state.me.trades) || DEFAULT_TRADES).forEach(add);
+    state.items.forEach(function (p) { trades(p).forEach(add); });
+    (extra || []).forEach(add);
+    return out;
+  }
+  function locs(p) { return Array.isArray(p.locations) ? p.locations : []; }
+  function locText(p) { return locs(p).map(function (l) { return [l.name, l.phone, l.mobile, l.address].filter(Boolean).join(' '); }).join(' '); }
+  function townLine(p) { var n = locs(p).length; return [p.town].concat(trades(p)).filter(Boolean).join(' · ') + (n ? ' · +' + n + ' location' + (n > 1 ? 's' : '') : ''); }
+  function otherPhones(p) { return locs(p).filter(function (l) { return l.phone || l.mobile; }).map(function (l) { return (l.name ? l.name + ' ' : '') + [l.phone, l.mobile].filter(Boolean).join(' / '); }); }
+
+  // ---------- API ----------
+  function api(method, path, body) {
+    return fetch(path, { method: method, headers: body ? { 'content-type': 'application/json' } : {}, body: body ? JSON.stringify(body) : undefined, credentials: 'same-origin' })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) { var e = new Error(j.error || ('HTTP ' + r.status)); e.status = r.status; e.body = j; throw e; } return j; }); });
+  }
+  function showAuthProblem(err) {
+    var n = $('authNotice');
+    var fix = err.body && err.body.fix ? ' ' + err.body.fix : '';
+    n.innerHTML = '<b>Can\'t reach Applications.</b> ' + esc(err.message) + esc(fix) + (err.status === 401 ? ' <a href="/crm/">Reload</a>.' : '');
+    n.style.display = '';
+  }
+  function load() {
+    return api('GET', '/api/me').then(function (me) {
+      state.me = me; $('me').textContent = me.email + (me.role === 'superuser' ? ' · superuser' : '');
+      $('authNotice').style.display = 'none';
+      return api('GET', '/api/prospects');
+    }).then(function (j) { state.items = j.prospects || []; render(); }).catch(showAuthProblem);
+  }
+
+  // ---------- derived ----------
+  function filtered() {
+    var q = state.q.toLowerCase();
+    var out = state.items.filter(function (p) {
+      if (state.status && p.status !== state.status) return false;
+      if (state.holdReason && holdKey(p) !== state.holdReason) return false;
+      if (state.trade && !hasTrade(p, state.trade)) return false;
+      if (state.due && !isDue(p)) return false;
+      if (state.web && !isWebLead(p)) return false;
+      if (q) { var hay = [p.company, p.town, p.phone, p.mobile, p.whatsapp, p.title, p.first_name, p.last_name, p.note, p.trade, p.region, p.email, locText(p), Object.values(p.links || {}).join(' '), legalText(p)].join(' ').toLowerCase(); if (hay.indexOf(q) < 0) return false; }
+      return true;
+    });
+    var s = state.sort;
+    out.sort(function (a, b) {
+      if (s === 'company') return a.company.localeCompare(b.company);
+      if (s === 'created') return (b.created_at || '').localeCompare(a.created_at || '');
+      if (s === 'due') return (a.followup_due || '9999').localeCompare(b.followup_due || '9999');
+      return (b.updated_at || '').localeCompare(a.updated_at || '');
+    });
+    return out;
+  }
+  function counts() { var c = { all: state.items.length, due: 0, web: 0 }; STATUSES.forEach(function (s) { c[s[0]] = 0; }); state.items.forEach(function (p) { c[p.status] = (c[p.status] || 0) + 1; if (isDue(p)) c.due++; if (isWebLead(p)) c.web++; }); return c; }
+
+  // a hold reason folded to one of the preset chips, or 'other' for free text
+  function holdKey(p) { if (p.status !== 'hold') return ''; var r = (p.hold_reason || '').trim().toLowerCase(); for (var i = 0; i < HOLD_REASONS.length; i++) if (r === HOLD_REASONS[i].toLowerCase()) return HOLD_REASONS[i]; return r ? 'other' : 'none'; }
+  function renderHoldReasons() {
+    var bar = $('holdChipsBar'); bar.innerHTML = '';
+    var holds = state.items.filter(function (p) { return p.status === 'hold'; });
+    var show = state.status === 'hold' && holds.length > 0;
+    bar.classList.toggle('off', !show);
+    if (!show) { state.holdReason = ''; return; }
+    var counts = {}; holds.forEach(function (p) { var k = holdKey(p); counts[k] = (counts[k] || 0) + 1; });
+    var keys = HOLD_REASONS.filter(function (r) { return counts[r]; }).concat(counts.other ? ['other'] : []).concat(counts.none ? ['none'] : []);
+    var all = document.createElement('button'); all.type = 'button'; all.className = 'chip' + (state.holdReason ? '' : ' on'); all.innerHTML = 'Any reason <b>' + holds.length + '</b>'; all.onclick = function () { state.holdReason = ''; render(); }; bar.appendChild(all);
+    keys.forEach(function (k) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'chip' + (state.holdReason === k ? ' on' : '');
+      b.innerHTML = esc(k === 'other' ? 'Other reason' : k === 'none' ? 'No reason given' : k) + ' <b>' + counts[k] + '</b>';
+      b.onclick = function () { state.holdReason = state.holdReason === k ? '' : k; render(); };
+      bar.appendChild(b);
+    });
+  }
+  // ---------- render ----------
+  function render() {
+    var c = counts();
+    var sentToday = state.items.filter(function (p) { return p.sent_at === todayIso; }).length;
+    var value = state.items.reduce(function (a, p) { return a + (Number(p.value_gbp) || 0); }, 0);
+    $('stats').innerHTML = '<span><b>' + c.all + '</b> applications</span><span><b>' + sentToday + '</b> applied today</span><span><b>' + c.due + '</b> follow-ups due</span><span><b>' + c.intake + '</b> interviewing</span><span><b>' + c.client + '</b> offer' + (c.client === 1 ? '' : 's') + (value ? ' · ₹' + value + 'L' : '') + '</span>' + (c.web ? '<span><b>' + c.web + '</b> stale link' + (c.web > 1 ? 's' : '') + '</span>' : '');
+    var chips = $('chips'); chips.innerHTML = '';
+    var all = document.createElement('button'); all.type = 'button'; all.className = 'chip' + (state.status ? '' : ' on'); all.innerHTML = 'All <b>' + c.all + '</b>'; all.onclick = function () { state.status = ''; render(); }; chips.appendChild(all);
+    STATUSES.forEach(function (s) { var b = document.createElement('button'); b.type = 'button'; b.className = 'chip' + (state.status === s[0] ? ' on' : ''); b.innerHTML = esc(s[1]) + ' <b>' + (c[s[0]] || 0) + '</b>'; b.onclick = function () { state.status = state.status === s[0] ? '' : s[0]; render(); }; chips.appendChild(b); });
+    renderHoldReasons();
+    renderTradeFilter();
+    $('dueBtn').className = 'small ' + (state.due ? 'primary' : 'ghost'); $('dueBtn').textContent = 'Follow-ups due' + (c.due ? ' (' + c.due + ')' : '');
+    $('webBtn').className = 'small ' + (state.web ? 'primary' : 'ghost'); $('webBtn').textContent = 'Stale links' + (c.web ? ' (' + c.web + ')' : '');
+    Array.prototype.forEach.call($('viewSeg').querySelectorAll('button'), function (b) { b.classList.toggle('on', b.dataset.view === state.view); });
+    $('listView').style.display = state.view === 'list' ? '' : 'none';
+    $('boardView').style.display = state.view === 'board' ? '' : 'none';
+    if (state.view === 'list') renderList(filtered()); else renderBoard(filtered());
+  }
+  function renderTradeFilter() {
+    var sel = $('tradeFilter'), cnt = {};
+    state.items.forEach(function (p) { trades(p).forEach(function (t) { cnt[t] = (cnt[t] || 0) + 1; }); });
+    var names = Object.keys(cnt).sort(function (a, b) { return cnt[b] - cnt[a] || a.localeCompare(b); });
+    if (state.trade && !cnt[state.trade]) state.trade = '';
+    sel.innerHTML = '<option value="">All segments</option>' + names.map(function (t) { return '<option value="' + esc(t) + '"' + (state.trade === t ? ' selected' : '') + '>' + esc(t) + ' (' + cnt[t] + ')</option>'; }).join('');
+    sel.style.display = names.length ? '' : 'none';
+  }
+  function statusSelect(p, cls) {
+    var sel = document.createElement('select'); if (cls) sel.className = cls;
+    STATUSES.forEach(function (s) { var o = document.createElement('option'); o.value = s[0]; o.textContent = s[1]; if (p.status === s[0]) o.selected = true; sel.appendChild(o); });
+    sel.addEventListener('click', function (e) { e.stopPropagation(); });
+    sel.addEventListener('change', function (e) {
+      e.stopPropagation();
+      if (sel.value === 'hold') { askHold(p, function (extra) { if (extra) setStatus(p, 'hold', extra); else sel.value = p.status; }); return; }
+      setStatus(p, sel.value);
+    });
+    return sel;
+  }
+  function renderList(items) {
+    var tb = $('rows'); tb.innerHTML = '';
+    $('emptyList').style.display = items.length ? 'none' : '';
+    items.forEach(function (p) {
+      var tr = document.createElement('tr'); tr.className = 'row';
+      var contact = [[p.title, p.first_name, p.last_name].filter(Boolean).join(' '), p.phone, p.mobile, p.email].filter(Boolean).join(' · ');
+      var others = otherPhones(p);
+      var waL = window.OPS_WA_LINK(p.whatsapp);
+      var channel = (p.contact_form_url ? '<a href="' + esc(p.contact_form_url) + '" target="_blank" rel="noopener">form ↗</a>' : (p.website ? '<a href="' + esc(p.website) + '" target="_blank" rel="noopener">site ↗</a>' : esc(p.channel))) + (waL ? ' · <a href="' + esc(waL.href) + '" target="_blank" rel="noopener">WhatsApp ↗</a>' : '') + webTag(p);
+      var dueCls = isDue(p) ? 'due' : (p.status === 'sent' && p.followup_due ? 'soon' : '');
+      tr.innerHTML =
+        '<td><div>' + moodTag(p) + '<b>' + esc(p.company) + '</b>' + (p.ltd ? ' <span class="tag">Ltd</span>' : '') + (p.notice ? ' <span class="tag web" title="' + esc(p.notice) + '">notice</span>' : '') + '</div><div class="sub">' + esc(townLine(p)) + '</div></td>' +
+        '<td data-k="Contact"><div>' + esc(contact) + '</div>' + (others.length ? '<div class="sub">' + esc(others.slice(0, 2).join(' · ') + (others.length > 2 ? ' · +' + (others.length - 2) + ' more' : '')) + '</div>' : '') + '<div class="sub">' + channel + '</div></td>' +
+        '<td data-k="Status"></td>' +
+        '<td data-k="Sent">' + (p.sent_at ? esc(fmtDate(p.sent_at)) + '<div class="sub">' + daysSince(p.sent_at) + 'd ago</div>' : '<span class="sub">—</span>') + '</td>' +
+        '<td data-k="Follow-up" class="' + dueCls + '">' + (p.followup_due ? esc(fmtDate(p.followup_due)) : '<span class="sub">—</span>') + '</td>' +
+        '<td data-k="Note"><span class="sub">' + esc(p.note.length > 90 ? p.note.slice(0, 88) + '…' : p.note) + '</span></td>';
+      tr.children[2].appendChild(statusSelect(p));
+      if (p.status === 'hold') {
+        var hs = document.createElement('div'); hs.className = 'sub'; hs.textContent = (p.hold_reason || 'on hold') + (p.followup_due ? ' · ' + (LABELC[p.channel] || p.channel) + ' ' + fmtDate(p.followup_due) : '') + ' ';
+        var ch = document.createElement('a'); ch.href = '#'; ch.className = 'change'; ch.textContent = 'change'; ch.title = 'Change the reason or what to try next';
+        ch.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); askHold(p, function (extra) { if (extra) setStatus(p, 'hold', extra); }); });
+        hs.appendChild(ch); tr.children[2].appendChild(hs);
+      }
+      tr.children[1].querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function (e) { e.stopPropagation(); }); });
+      tr.addEventListener('click', function () { openForm(p); });
+      tb.appendChild(tr);
+    });
+  }
+  function renderBoard(items) {
+    var b = $('boardView'); b.innerHTML = '';
+    STATUSES.forEach(function (s) {
+      var col = document.createElement('div'); col.className = 'col'; col.dataset.status = s[0];
+      var list = items.filter(function (p) { return p.status === s[0]; });
+      col.innerHTML = '<h3><span>' + esc(s[1]) + '</span><span>' + list.length + '</span></h3>';
+      list.forEach(function (p) {
+        var k = document.createElement('div'); k.className = 'kcard'; k.draggable = true; k.dataset.id = p.id;
+        var when = p.status === 'hold' ? (p.hold_reason || 'on hold') + (p.followup_due ? ' · ' + (LABELC[p.channel] || p.channel) + ' ' + fmtDate(p.followup_due) : '') : (p.status === 'sent' && p.sent_at ? daysSince(p.sent_at) + 'd since applied' : (p.last_contact ? 'last contact ' + fmtDate(p.last_contact) : ''));
+        k.innerHTML = '<div class="t">' + moodTag(p) + esc(p.company) + '</div><div class="m">' + esc([p.town + (locs(p).length ? ' +' + locs(p).length : ''), p.first_name].filter(Boolean).join(' · ')) + webTag(p) + '</div>' + (p.note ? '<div class="m">' + esc(p.note.length > 70 ? p.note.slice(0, 68) + '…' : p.note) + '</div>' : '') + '<div class="f"><span class="m ' + (isDue(p) ? 'due' : '') + '">' + esc(isDue(p) ? 'follow-up due' : when) + '</span></div>';
+        k.querySelector('.f').appendChild(statusSelect(p));
+        k.addEventListener('click', function () { openForm(p); });
+        k.addEventListener('dragstart', function (e) { e.dataTransfer.setData('text/plain', p.id); e.dataTransfer.effectAllowed = 'move'; });
+        col.appendChild(k);
+      });
+      col.addEventListener('dragover', function (e) { e.preventDefault(); col.classList.add('over'); });
+      col.addEventListener('dragleave', function () { col.classList.remove('over'); });
+      col.addEventListener('drop', function (e) { e.preventDefault(); col.classList.remove('over'); var id = e.dataTransfer.getData('text/plain'); var p = state.items.find(function (x) { return x.id === id; }); if (p && p.status !== s[0]) setStatus(p, s[0]); });
+      b.appendChild(col);
+    });
+  }
+
+  // ---------- mutations ----------
+  function replaceItem(np) { var i = state.items.findIndex(function (x) { return x.id === np.id; }); if (i >= 0) state.items[i] = np; else state.items.unshift(np); }
+  function setStatus(p, status, extra) {
+    var body = Object.assign({ status: status }, extra || {});
+    // stamp with the local date, so the Worker (UTC) doesn't write yesterday in an Indian morning
+    if (status === 'sent' && !p.sent_at) body.sent_at = todayIso;
+    if ((status === 'replied' || status === 'intake' || status === 'client') && !body.last_contact) body.last_contact = todayIso;
+    api('PUT', '/api/prospects/' + p.id, body).then(function (j) { replaceItem(j.prospect); render(); toast(p.company + ' → ' + LABEL[status]); }).catch(function (e) { toast(e.message); render(); });
+  }
+  // ---------- the hold popup ----------
+  // cb(extra) with { hold_reason, channel?, followup_due? }, or cb(null) if cancelled
+  var holdCb = null;
+  function askHold(p, cb) {
+    holdCb = cb;
+    $('holdTitle').textContent = 'What\'s blocking ' + (p.company || 'this one') + ' right now?';
+    var chips = $('holdChips'); chips.innerHTML = '';
+    HOLD_REASONS.forEach(function (r) { var b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = r; b.addEventListener('click', function () { $('holdReason').value = r; if (HOLD_SKIP_FORM.test(r)) $('holdNext').value = String(p.ltd) === '1' && p.email ? 'email' : 'phone'; $('holdReason').focus(); }); chips.appendChild(b); });
+    $('holdReason').value = p.hold_reason || '';
+    var sel = $('holdNext'); sel.innerHTML = ''; HOLD_NEXT.forEach(function (o) { var e = document.createElement('option'); e.value = o[0]; e.textContent = o[1]; sel.appendChild(e); });
+    sel.value = p.status === 'hold' ? (p.channel || '') : (window.OPS_WA_LINK(p.whatsapp) ? 'whatsapp' : ((p.phone || p.mobile) ? 'phone' : ''));
+    $('holdModal').classList.add('open');
+    setTimeout(function () { $('holdReason').focus(); }, 30);
+  }
+  function closeHold(result) { $('holdModal').classList.remove('open'); var cb = holdCb; holdCb = null; if (cb) cb(result); }
+  $('holdOk').addEventListener('click', function () {
+    var reason = $('holdReason').value.trim();
+    if (!reason) { $('holdReason').focus(); toast('Say why, in a few words'); return; }
+    var next = $('holdNext').value;
+    var extra = { hold_reason: reason };
+    if (next) { extra.channel = next; extra.followup_due = holdDate(next); }
+    closeHold(extra);
+  });
+  $('holdCancel').addEventListener('click', function () { closeHold(null); });
+  $('holdModal').addEventListener('click', function (e) { if (e.target === $('holdModal')) closeHold(null); });
+
+  // ---------- form ----------
+  var form = $('form');
+  (function () { var sel = $('statusSel'); STATUSES.forEach(function (s) { var o = document.createElement('option'); o.value = s[0]; o.textContent = s[1]; sel.appendChild(o); }); })();
+  function openForm(p) {
+    state.editing = p || null;
+    $('formTitle').textContent = (p && MOOD_ICON[p.mood] ? MOOD_ICON[p.mood] + ' ' : '') + (p ? p.company : 'Add application');
+    form.reset();
+    var f = form.elements;
+    clearLocRows(); clearSrcRows(); fillLinks(null); fillLegal(null);
+    if (p) { Object.keys(p).forEach(function (k) { if (f[k] && k !== 'id' && k !== 'locations' && k !== 'sources' && k !== 'links' && k !== 'legal') f[k].value = p[k] == null ? '' : p[k]; }); locs(p).forEach(addLocRow); (Array.isArray(p.sources) ? p.sources : []).forEach(addSrcRow); fillLinks(p.links); fillLegal(p.legal); }
+    else { var last = {}; try { last = JSON.parse(localStorage.getItem('opscrm.last') || '{}'); } catch (err) {} f.trade.value = last.trade || 'P2 FDE India-remote'; f.region.value = last.region || 'LinkedIn'; f.status.value = 'new'; f.channel.value = 'form'; f.ltd.value = '1'; }
+    renderTradeChips(trades({ trade: f.trade.value }));
+    renderMoods();
+    renderHoldLine();
+    renderDupHint();
+    loadShots();
+    $('deleteBtn').style.display = p && state.me && state.me.role === 'superuser' ? '' : 'none';
+    $('metaLine').textContent = p ? 'added ' + (p.created_at || '').slice(0, 10) + ' by ' + (p.created_by || '') + (p.updated_by ? ' · updated by ' + p.updated_by : '') : '';
+    // Details first: the first thing needed on an existing record is their contact-form link, then the message on Send
+    showTab('details');
+    openRelevant(p ? p.status : 'new', p ? p.sent_at : '');
+    renderMessages();
+    $('modal').classList.add('open');
+    // focus once the dialog is painted, unless something in the form already has focus: a new record starts at the
+    // company name; an existing one lands on the contact-form link (or the website), selected so Ctrl+C copies it
+    setTimeout(function () {
+      if (form.contains(document.activeElement)) return;
+      if (!p) { f.company.focus(); return; }
+      var link = f.contact_form_url.value ? f.contact_form_url : (f.website.value ? f.website : null);
+      if (link) { link.focus(); link.select(); } else f.contact_form_url.focus();
+    }, 50);
+  }
+  function renderMoods() {
+    var box = $('moods'), cur = form.elements.mood.value; box.innerHTML = '';
+    MOODS.forEach(function (m) { var b = document.createElement('button'); b.type = 'button'; b.className = m[0] === cur ? 'on' : ''; b.textContent = m[1]; b.title = m[2]; b.setAttribute('aria-label', m[2]); b.setAttribute('aria-pressed', m[0] === cur ? 'true' : 'false'); b.addEventListener('click', function () { form.elements.mood.value = m[0]; renderMoods(); }); box.appendChild(b); });
+  }
+  // ---------- tabs and message previews ----------
+  function showTab(name) {
+    Array.prototype.forEach.call($('tabs').querySelectorAll('button'), function (b) { b.classList.toggle('on', b.dataset.tab === name); b.setAttribute('aria-selected', b.dataset.tab === name ? 'true' : 'false'); });
+    Array.prototype.forEach.call(form.querySelectorAll('section.tab'), function (sec) { sec.hidden = sec.dataset.tab !== name; });
+  }
+  $('tabs').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) showTab(b.dataset.tab); });
+  // open the message that matches where the prospect is; the form message is always visible
+  function openRelevant(status, sentAt) {
+    var ds = daysSince(sentAt);
+    $('d_fu1').open = status === 'sent';
+    $('d_fu2').open = status === 'sent' && ds != null && ds >= 6;
+    $('d_reply').open = status === 'replied' || status === 'intake' || status === 'client';
+    $('d_email').open = false;
+    $('d_wa').open = false;
+    $('d_waNudge').open = status === 'sent' && !!window.OPS_WA_LINK(form.elements.whatsapp.value);
+    if (status === 'hold') { var ch = form.elements.channel.value; $('d_wa').open = ch === 'whatsapp'; $('d_email').open = ch === 'email'; }
+  }
+  var lastMsgs = null;
+  function renderMessages() {
+    var v = formValues();
+    var m = lastMsgs = buildMessages(v, CONFIG);
+    ['jobType', 'form', 'email', 'fu1', 'fu2', 'reply', 'wa', 'waNudge'].forEach(function (k) { $('m_' + k).textContent = m[k]; });
+    var waL = window.OPS_WA_LINK(v.whatsapp, v.status === 'sent' ? m.waNudge : m.wa);
+    var waBtn = $('openWa');
+    waBtn.classList.toggle('off', !waL);
+    $('waHint').classList.toggle('off', !(waL && !waL.prefilled));
+    if (waL) { waBtn.href = waL.href; waBtn.textContent = waL.prefilled ? 'Open WhatsApp with the message ↗' : 'Open their WhatsApp ↗'; }
+    $('m_sample').textContent = m.sample;
+    var url = v.contact_form_url || v.website;
+    var a = $('openSite');
+    a.classList.toggle('off', !url);
+    if (url) { a.href = /^https?:/i.test(url) ? url : 'https://' + url; a.textContent = v.contact_form_url ? 'Open the job posting ↗' : 'Open their website ↗'; }
+    var extra = collectLocs().filter(function (l) { return l.phone || l.mobile; }).map(function (l) { return (l.name ? l.name + ' ' : '') + [l.phone, l.mobile].filter(Boolean).join(' / '); });
+    $('sendContact').textContent = [v.phone, v.mobile, v.email].concat(extra).filter(Boolean).join(' · ');
+  }
+  form.addEventListener('input', function (e) { if (e.target && /^(note|company|title|first_name|last_name|town|region|contact_form_url|website|email|phone|mobile|whatsapp)$/.test(e.target.name || '') || e.target.dataset.f) renderMessages(); });
+  // ---------- "already in the CRM?" while typing: same name, same phone or same website ----------
+  function normName(x) { return String(x || '').toLowerCase().replace(/&/g, ' and ').replace(/\b(ltd|limited|llp|plc|the|co|company|uk)\b/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim(); }
+  function domainOf(u) { return String(u || '').trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[/?#]/)[0]; }
+  function phoneKey(n) { var d = String(n || '').replace(/\D/g, ''); if (d.indexOf('44') === 0 && d.length > 10) d = '0' + d.slice(2); return d.length >= 10 ? d.slice(-10) : ''; }
+  function findDuplicates(v) {
+    var name = normName(v.company), ph = phoneKey(v.phone) || phoneKey(v.mobile), doms = [domainOf(v.website), domainOf(v.contact_form_url)].filter(Boolean);
+    var out = [];
+    state.items.forEach(function (p) {
+      if (state.editing && p.id === state.editing.id) return;
+      var pn = normName(p.company), why = '';
+      if (name.length >= 4 && (pn === name || pn.indexOf(name) === 0 || name.indexOf(pn) === 0)) why = 'same name';
+      else if (ph && (phoneKey(p.phone) === ph || phoneKey(p.mobile) === ph || locs(p).some(function (l) { return phoneKey(l.phone) === ph || phoneKey(l.mobile) === ph; }))) why = 'same phone';
+      else if (doms.length && (doms.indexOf(domainOf(p.website)) >= 0 || doms.indexOf(domainOf(p.contact_form_url)) >= 0)) why = 'same website';
+      if (why) out.push({ p: p, why: why });
+    });
+    return out.slice(0, 3);
+  }
+  function renderDupHint() {
+    var el = $('dupHint'), d = findDuplicates(formValues());
+    el.classList.toggle('off', !d.length); el.innerHTML = '';
+    if (!d.length) return;
+    el.appendChild(document.createTextNode('Already in Applications: '));
+    d.forEach(function (x, i) {
+      var a = document.createElement('a'); a.href = '#'; a.textContent = x.p.company; a.title = 'Open that record instead';
+      a.addEventListener('click', function (e) { e.preventDefault(); openForm(x.p); });
+      el.appendChild(a);
+      var when = x.p.sent_at ? ' ' + fmtDate(x.p.sent_at) : '';
+      el.appendChild(document.createTextNode(' (' + [x.p.town, LABEL[x.p.status] + when, x.why].filter(Boolean).join(' · ') + ')' + (i < d.length - 1 ? ', ' : '')));
+    });
+  }
+  form.addEventListener('input', function (e) { if (e.target && /^(company|contact_form_url|website|phone|mobile)$/.test(e.target.name || '')) renderDupHint(); if (e.target && e.target.name === 'notice') renderHoldLine(); });
+  form.elements.status.addEventListener('change', function () {
+    var f = form.elements;
+    if (f.status.value === 'hold') {
+      var snapshot = { company: f.company.value, hold_reason: f.hold_reason.value, status: state.editing ? state.editing.status : 'new', channel: f.channel.value, whatsapp: f.whatsapp.value, phone: f.phone.value, ltd: f.ltd.value, email: f.email.value };
+      askHold(snapshot, function (extra) {
+        if (!extra) { f.status.value = state.editing ? state.editing.status : 'new'; if (f.status.value === 'hold') f.status.value = 'new'; renderMessages(); return; }
+        f.hold_reason.value = extra.hold_reason; if (extra.channel) f.channel.value = extra.channel; if (extra.followup_due) f.followup_due.value = extra.followup_due;
+        renderHoldLine(); renderMessages(); toast('On hold; press Save');
+      });
+    } else { f.hold_reason.value = ''; renderHoldLine(); }
+    renderMessages();
+  });
+  function renderHoldLine() {
+    var f = form.elements, el = $('holdLine');
+    var dnd = f.status.value === 'dnd';
+    var noticeOnly = !dnd && f.status.value !== 'hold' && !!f.notice.value.trim();
+    var on = dnd || noticeOnly || (f.status.value === 'hold' && f.hold_reason.value);
+    el.classList.toggle('off', !on); el.classList.toggle('dnd', dnd); el.classList.toggle('notice', noticeOnly);
+    if (noticeOnly) { el.textContent = 'Their notice: ' + f.notice.value.trim() + ' — one send to a published generic address at most; log the source.'; return; }
+    if (dnd) el.textContent = 'Do not contact: they asked us to stop. No forms, no email, no WhatsApp, no calls, on any product.';
+    else if (on) el.innerHTML = esc('On hold: ' + f.hold_reason.value + (f.followup_due.value ? ' · next: ' + (LABELC[f.channel.value] || f.channel.value) + ' on ' + fmtDate(f.followup_due.value) : ' · nothing planned')) + ' <a href="#" class="change" id="holdChange">change</a>';
+  }
+  $('holdLine').addEventListener('click', function (e) {
+    if (!e.target.closest('#holdChange')) return;
+    e.preventDefault();
+    var f = form.elements;
+    askHold({ company: f.company.value, hold_reason: f.hold_reason.value, status: 'hold', channel: f.channel.value, whatsapp: f.whatsapp.value, phone: f.phone.value, ltd: f.ltd.value, email: f.email.value }, function (extra) {
+      if (!extra) return;
+      f.hold_reason.value = extra.hold_reason; if (extra.channel) f.channel.value = extra.channel; if (extra.followup_due) f.followup_due.value = extra.followup_due;
+      renderHoldLine(); renderMessages(); toast('Changed; press Save');
+    });
+  });
+  form.addEventListener('click', function (e) {
+    var fo = e.target.closest('button.fopen');
+    if (fo) { e.preventDefault(); var oi = fo.parentNode.querySelector('input'); var ov = (oi.value || '').trim(); if (!ov) { toast('No link yet'); oi.focus(); return; } if (oi.dataset.link === 'companies_house' && /^[A-Z]{0,2}\d{6,8}$/i.test(ov)) ov = 'https://find-and-update.company-information.service.gov.uk/company/' + ov.toUpperCase(); window.open(/^https?:/i.test(ov) ? ov : 'https://' + ov, '_blank', 'noopener'); return; }
+    var fc = e.target.closest('button.fcopy');
+    if (fc) { e.preventDefault(); var inp = fc.parentNode.querySelector('input'); var val = (inp.value || '').trim(); if (!val) { toast('Nothing to copy'); return; } copy(val, inp.closest('.field').querySelector('label').textContent.split(':')[0].split('(')[0].trim()); return; }
+    var b = e.target.closest('button.copy'); if (!b) return;
+    e.preventDefault(); e.stopPropagation(); // inside a <summary>, so don't toggle it
+    renderMessages();
+    var k = b.dataset.copy;
+    var labels = { jobType: 'Opener', form: 'Application note', email: 'Email', fu1: 'Day-3 follow-up', fu2: 'Day-7 follow-up', reply: 'Reply', sample: 'CV filename', wa: 'WhatsApp message', waNudge: 'WhatsApp nudge' };
+    copy(lastMsgs[k], labels[k] || 'Text');
+  });
+  function closeForm() { $('modal').classList.remove('open'); state.editing = null; }
+  function formValues() { var o = {}; Array.prototype.forEach.call(form.elements, function (el) { if (el.name) o[el.name] = el.value; }); o.locations = collectLocs(); o.sources = collectSrcs(); o.links = collectLinks(); o.legal = collectLegal(); return o; }
+  // trades tick-list; the hidden input "trade" carries the ticked ones as "A, B, C"
+  function renderTradeChips(selected) {
+    var box = $('tradeChips'); box.innerHTML = '';
+    var on = {}; selected.forEach(function (t) { on[t.toLowerCase()] = t; });
+    knownTrades(selected).forEach(function (t) {
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'chip' + (on[t.toLowerCase()] ? ' on' : ''); b.textContent = t; b.dataset.trade = t;
+      b.setAttribute('aria-pressed', on[t.toLowerCase()] ? 'true' : 'false');
+      b.addEventListener('click', function () { b.classList.toggle('on'); b.setAttribute('aria-pressed', b.classList.contains('on') ? 'true' : 'false'); syncTrade(); });
+      box.appendChild(b);
+    });
+    syncTrade();
+  }
+  function selectedTrades() { return Array.prototype.map.call($('tradeChips').querySelectorAll('.chip.on'), function (b) { return b.dataset.trade; }); }
+  function syncTrade() { form.elements.trade.value = selectedTrades().join(', '); }
+  function addOtherTrade() {
+    var t = $('tradeOther').value.trim().replace(/\s+/g, ' ');
+    if (!t) return;
+    var sel = selectedTrades(); if (!sel.some(function (x) { return x.toLowerCase() === t.toLowerCase(); })) sel.push(t);
+    $('tradeOther').value = '';
+    renderTradeChips(sel);
+  }
+  $('tradeAdd').addEventListener('click', addOtherTrade);
+  $('tradeOther').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); addOtherTrade(); } });
+  // extra locations: rows after the main one, each { name, phone, address }
+  function addLocRow(l) {
+    var row = document.createElement('div'); row.className = 'locrow extra';
+    row.innerHTML = '<input type="text" data-f="name" placeholder="Role title" autocomplete="off"><input type="tel" data-f="phone" placeholder="Phone"><input type="tel" data-f="mobile" placeholder="Mobile"><input type="text" data-f="address" placeholder="Location note"><button class="x" type="button" title="Remove this role" aria-label="Remove this role">×</button>';
+    if (l) { row.querySelector('[data-f=name]').value = l.name || ''; row.querySelector('[data-f=phone]').value = l.phone || ''; row.querySelector('[data-f=mobile]').value = l.mobile || ''; row.querySelector('[data-f=address]').value = l.address || ''; }
+    row.querySelector('.x').addEventListener('click', function () { row.remove(); renderMessages(); });
+    $('locs').appendChild(row);
+    return row;
+  }
+  // ---------- sources (where each detail came from) ----------
+  var SOURCE_KINDS = [['website', 'Company careers page'], ['google', 'Google search / AI overview'], ['maps', 'The scheduled shortlist'], ['linkedin', 'LinkedIn'], ['apollo', 'Job board (Remotive, Wellfound…)'], ['companies_house', 'Naukri / Instahyre'], ['directory', 'fastaijobs / aijobs.net'], ['referral', 'Referral — told to me'], ['other', 'Other']];
+  var SOURCE_LABEL = {}; SOURCE_KINDS.forEach(function (k) { SOURCE_LABEL[k[0]] = k[1]; });
+  function addSrcRow(x) {
+    var row = document.createElement('div'); row.className = 'srcrow';
+    row.innerHTML = '<select data-f="kind">' + SOURCE_KINDS.map(function (k) { return '<option value="' + k[0] + '">' + esc(k[1]) + '</option>'; }).join('') + '</select><input type="text" data-f="url" placeholder="Link (the page, the search, the listing)" autocomplete="off"><input type="text" data-f="gave" placeholder="What it gave: email, mobile, name…"><input type="date" data-f="found_on"><button class="x" type="button" title="Remove">×</button><input type="text" data-f="note" placeholder="Note (optional): e.g. email not on their site, shown in the Google AI overview">';
+    row.querySelector('[data-f=found_on]').value = (x && x.found_on) || todayIso;
+    if (x) { row.querySelector('[data-f=kind]').value = x.kind || 'other'; row.querySelector('[data-f=url]').value = x.url || ''; row.querySelector('[data-f=gave]').value = x.gave || ''; row.querySelector('[data-f=note]').value = x.note || ''; }
+    row.querySelector('.x').addEventListener('click', function () { row.remove(); });
+    $('srcs').appendChild(row);
+    return row;
+  }
+  function clearSrcRows() { $('srcs').innerHTML = ''; }
+  // ---------- social & directory links ----------
+  function legalText(p) { var l = p.legal || {}; return [l.legal_name, l.registered_office, l.sic].concat((l.directors || []).map(function (d) { return d.name + ' ' + d.note; })).filter(Boolean).join(' '); }
+  function collectLinks() { var o = {}; Array.prototype.forEach.call(form.querySelectorAll('input[data-link]'), function (i) { var v = i.value.trim(); if (v) o[i.dataset.link] = v; }); return o; }
+  function fillLinks(links) { var l = links && typeof links === 'object' ? links : {}; Array.prototype.forEach.call(form.querySelectorAll('input[data-link]'), function (i) { i.value = l[i.dataset.link] || ''; }); }
+  // ---------- legal: the register entry and the directors ----------
+  function addDirRow(d) {
+    var row = document.createElement('div'); row.className = 'dirrow';
+    row.innerHTML = '<input type="text" data-f="name" placeholder="Name as on the register" autocomplete="off"><input type="text" data-f="role" placeholder="Director" list="dirRoles"><input type="date" data-f="appointed" title="Appointed on"><button class="small use" type="button" title="Put this name in First name / Last name on Details">Use as contact</button><button class="x" type="button" title="Remove">×</button><input type="text" data-f="note" placeholder="Note (optional): also the LinkedIn profile, the one who answers the phone…">';
+    if (d) { row.querySelector('[data-f=name]').value = d.name || ''; row.querySelector('[data-f=role]').value = d.role || ''; row.querySelector('[data-f=appointed]').value = d.appointed || ''; row.querySelector('[data-f=note]').value = d.note || ''; }
+    row.querySelector('.x').addEventListener('click', function () { row.remove(); });
+    row.querySelector('.use').addEventListener('click', function () {
+      // the register writes SURNAME, Given Names; take the first given name and the surname
+      var raw = row.querySelector('[data-f=name]').value.trim(); if (!raw) return;
+      var first = '', last = '';
+      if (raw.indexOf(',') > 0) { var parts = raw.split(','); last = parts[0].trim(); first = parts.slice(1).join(',').trim().split(/\s+/)[0] || ''; }
+      else { var w = raw.split(/\s+/); first = w[0]; last = w.slice(1).join(' '); }
+      var cap = function (x) { return x ? x.charAt(0).toUpperCase() + x.slice(1).toLowerCase() : ''; };
+      form.elements.first_name.value = cap(first); form.elements.last_name.value = last.split(/[\s-]+/).map(cap).join(last.indexOf('-') >= 0 ? '-' : ' ');
+      if (!form.elements.title.value) form.elements.title.value = 'Mr';
+      renderMessages(); toast('Contact set to ' + form.elements.first_name.value + ' ' + form.elements.last_name.value + ' (check the title)');
+    });
+    $('dirs').appendChild(row);
+    return row;
+  }
+  function clearDirRows() { $('dirs').innerHTML = ''; }
+  function collectLegal() {
+    var o = {};
+    Array.prototype.forEach.call(form.querySelectorAll('[data-legal]'), function (i) { var v = i.value.trim(); if (v) o[i.dataset.legal] = v; });
+    var ds = Array.prototype.map.call($('dirs').querySelectorAll('.dirrow'), function (r) { return { name: r.querySelector('[data-f=name]').value.trim(), role: r.querySelector('[data-f=role]').value.trim(), appointed: r.querySelector('[data-f=appointed]').value, note: r.querySelector('[data-f=note]').value.trim() }; }).filter(function (d) { return d.name || d.note; });
+    if (ds.length) o.directors = ds;
+    return o;
+  }
+  function fillLegal(legal) {
+    var l = legal && typeof legal === 'object' ? legal : {};
+    Array.prototype.forEach.call(form.querySelectorAll('[data-legal]'), function (i) { i.value = l[i.dataset.legal] || ''; });
+    clearDirRows(); (Array.isArray(l.directors) ? l.directors : []).forEach(addDirRow);
+  }
+  $('addDir').addEventListener('click', function () { var r = addDirRow(null); r.querySelector('[data-f=name]').focus(); });
+  function collectSrcs() {
+    return Array.prototype.map.call($('srcs').querySelectorAll('.srcrow'), function (r) {
+      return { kind: r.querySelector('[data-f=kind]').value, url: r.querySelector('[data-f=url]').value.trim(), gave: r.querySelector('[data-f=gave]').value.trim(), found_on: r.querySelector('[data-f=found_on]').value, note: r.querySelector('[data-f=note]').value.trim() };
+    }).filter(function (x) { return x.url || x.gave || x.note; });
+  }
+  $('addSrc').addEventListener('click', function () { var r = addSrcRow(null); r.querySelector('[data-f=url]').focus(); });
+  // ---------- screenshots (R2 behind the API) ----------
+  var shotsEnabled = null;
+  function renderShots(list, enabled) {
+    var box = $('shots'); box.innerHTML = '';
+    if (!state.editing) { box.innerHTML = '<span class="hint">Save the record first.</span>'; $('shotAdd').style.display = 'none'; return; }
+    if (enabled === false) { box.innerHTML = '<span class="hint">Screenshots need the R2 bucket "jobs-files" (see README); the attach button appears once it exists.</span>'; $('shotAdd').style.display = 'none'; return; }
+    $('shotAdd').style.display = '';
+    if (!list.length) { box.innerHTML = '<span class="hint">None.</span>'; return; }
+    list.forEach(function (f) {
+      var d = document.createElement('div'); d.className = 'shot';
+      var href = '/api/prospects/' + state.editing.id + '/files?key=' + encodeURIComponent(f.key);
+      d.innerHTML = '<a class="img" href="' + esc(href) + '" target="_blank" rel="noopener" title="' + esc(f.label || f.name) + '">' + (/^image\//.test(f.type) ? '<img src="' + esc(href) + '" alt="">' : '<div style="padding:30px 8px;text-align:center">PDF</div>') + '</a><div class="m"><span>' + esc((f.label || f.name).slice(0, 40)) + '<br>' + esc(String(f.uploaded).slice(0, 10)) + '</span></div>';
+      if (state.me && state.me.role === 'superuser') { var x = document.createElement('button'); x.type = 'button'; x.className = 'x'; x.textContent = '×'; x.title = 'Remove'; x.addEventListener('click', function () { if (!confirm('Remove this file?')) return; api('DELETE', '/api/prospects/' + state.editing.id + '/files?key=' + encodeURIComponent(f.key)).then(loadShots).catch(function (e) { toast(e.message); }); }); d.querySelector('.m').appendChild(x); }
+      box.appendChild(d);
+    });
+  }
+  function loadShots() {
+    if (!state.editing) { renderShots([]); return; }
+    api('GET', '/api/prospects/' + state.editing.id + '/files').then(function (r) { shotsEnabled = r.enabled !== false; renderShots(r.files || [], shotsEnabled); }).catch(function () { renderShots([], false); });
+  }
+  // shrink an image in the browser: longest side 1600px, JPEG 0.82 (a full-page screenshot comes out around 200 KB)
+  function shrink(file) {
+    if (!/^image\//.test(file.type) || file.type === 'image/gif') return Promise.resolve(file);
+    return new Promise(function (resolve) {
+      var img = new Image(); var url = URL.createObjectURL(file);
+      img.onload = function () {
+        var max = 1600, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, max / Math.max(w, h));
+        var c = document.createElement('canvas'); c.width = Math.round(w * k); c.height = Math.round(h * k);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        c.toBlob(function (b) { URL.revokeObjectURL(url); resolve(b ? new File([b], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' }) : file); }, 'image/jpeg', 0.82);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); resolve(file); };
+      img.src = url;
+    });
+  }
+  $('shotBtn').addEventListener('click', function () {
+    var inp = $('shotFile'); if (!state.editing || !inp.files || !inp.files[0]) { toast('Choose a file first'); return; }
+    $('shotBtn').disabled = true;
+    shrink(inp.files[0]).then(function (f) {
+      var fd = new FormData(); fd.append('file', f, f.name); fd.append('label', $('shotLabel').value.trim());
+      return fetch('/api/prospects/' + state.editing.id + '/files', { method: 'POST', body: fd, credentials: 'same-origin' }).then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status)); return j; }); });
+    }).then(function () { inp.value = ''; $('shotLabel').value = ''; toast('Attached'); loadShots(); }).catch(function (e) { toast(e.message); }).finally(function () { $('shotBtn').disabled = false; });
+  });
+  function clearLocRows() { Array.prototype.forEach.call($('locs').querySelectorAll('.extra'), function (r) { r.remove(); }); }
+  function collectLocs() {
+    return Array.prototype.map.call($('locs').querySelectorAll('.extra'), function (r) {
+      return { name: r.querySelector('[data-f=name]').value.trim(), phone: r.querySelector('[data-f=phone]').value.trim(), mobile: r.querySelector('[data-f=mobile]').value.trim(), address: r.querySelector('[data-f=address]').value.trim() };
+    }).filter(function (l) { return l.name || l.phone || l.address; });
+  }
+  $('addLoc').addEventListener('click', function () { var r = addLocRow(null); r.querySelector('[data-f=name]').focus(); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = formValues();
+    if (!v.company.trim()) { showTab('details'); form.elements.company.focus(); toast('Company name is required'); return; }
+    if (v.status === 'hold' && !v.hold_reason.trim()) { form.elements.status.dispatchEvent(new Event('change')); return; }
+    var req = state.editing ? api('PUT', '/api/prospects/' + state.editing.id, v) : api('POST', '/api/prospects', v);
+    $('saveBtn').disabled = true;
+    // a new record's region and trades become the defaults for the next one (this browser only)
+    if (!state.editing) { try { localStorage.setItem('opscrm.last', JSON.stringify({ region: v.region, trade: v.trade })); } catch (err) {} }
+    req.then(function (j) { replaceItem(j.prospect); closeForm(); render(); toast('Saved'); })
+      .catch(function (err) {
+        if (err.status === 409 && !state.editing && confirm(err.message + ' Add anyway?')) { v.allowDuplicate = true; return api('POST', '/api/prospects', v).then(function (j) { replaceItem(j.prospect); closeForm(); render(); toast('Saved'); }); }
+        toast(err.message);
+      })
+      .finally(function () { $('saveBtn').disabled = false; });
+  });
+  $('cancelBtn').addEventListener('click', closeForm);
+  $('modal').addEventListener('click', function (e) { if (e.target === $('modal')) closeForm(); });
+  document.addEventListener('keydown', function (e) { if (e.key !== 'Escape') return; if ($('holdModal').classList.contains('open')) { closeHold(null); return; } if ($('modal').classList.contains('open')) closeForm(); });
+  $('deleteBtn').addEventListener('click', function () {
+    var p = state.editing; if (!p || !confirm('Delete ' + p.company + '? This cannot be undone.')) return;
+    api('DELETE', '/api/prospects/' + p.id).then(function () { state.items = state.items.filter(function (x) { return x.id !== p.id; }); closeForm(); render(); toast('Deleted'); }).catch(function (e) { toast(e.message); });
+  });
+
+  // quick actions
+  function copy(text, label) {
+    (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject()).then(function () { toast(label + ' copied'); }).catch(function () { prompt('Copy this:', text); });
+  }
+  $('quick').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var f = form.elements;
+    if (b.dataset.q === 'sent') { f.status.value = 'sent'; if (!f.sent_at.value) f.sent_at.value = todayIso; if (!f.followup_due.value) { var d = new Date(todayIso + 'T00:00:00'); d.setDate(d.getDate() + 3); f.followup_due.value = localIso(d); } toast('Status set; press Save'); }
+    if (b.dataset.q === 'replied') { f.status.value = 'replied'; f.last_contact.value = todayIso; toast('Status set; press Save'); }
+  });
+
+  // ---------- import / export ----------
+  function parseCsv(text) {
+    var rows = [], row = [], field = '', q = false;
+    for (var i = 0; i < text.length; i++) {
+      var c = text[i];
+      if (q) { if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else q = false; } else field += c; }
+      else if (c === '"') q = true;
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+      else if (c !== '\r') field += c;
+    }
+    if (field || row.length) { row.push(field); rows.push(row); }
+    var h = rows.shift() || [];
+    return rows.filter(function (r) { return r.some(function (x) { return x.trim(); }); }).map(function (r) { var o = {}; h.forEach(function (k, i) { o[k.trim()] = (r[i] || '').trim(); }); return o; });
+  }
+  $('importBtn').addEventListener('click', function () { $('importFile').click(); });
+  $('importFile').addEventListener('change', function (e) {
+    var f = e.target.files[0]; if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      var rows = parseCsv(String(rd.result));
+      if (!rows.length) { toast('No rows found'); return; }
+      api('POST', '/api/prospects?action=import', { rows: rows }).then(function (j) { toast('Imported ' + j.added + ', skipped ' + j.skipped + ' duplicates' + (j.invalid ? ', ' + j.invalid + ' invalid' : '')); if (j.errors && j.errors.length) console.warn(j.errors); return load(); }).catch(function (err) { toast(err.message); });
+    };
+    rd.readAsText(f); e.target.value = '';
+  });
+
+  // ---------- controls ----------
+  $('q').addEventListener('input', function () { state.q = $('q').value.trim(); render(); });
+  $('sort').addEventListener('change', function () { state.sort = $('sort').value; render(); });
+  $('tradeFilter').addEventListener('change', function () { state.trade = $('tradeFilter').value; render(); });
+  $('dueBtn').addEventListener('click', function () { state.due = !state.due; render(); });
+  $('webBtn').addEventListener('click', function () { state.web = !state.web; render(); });
+  $('viewSeg').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; state.view = b.dataset.view; try { localStorage.setItem('opscrm.view', state.view); } catch (err) {} render(); });
+  $('addBtn').addEventListener('click', function () { openForm(null); });
+  try { var v = localStorage.getItem('opscrm.view'); if (v === 'board' || v === 'list') state.view = v; } catch (err) {}
+
+  load();
+})();
+</script>
+</body>
+</html>

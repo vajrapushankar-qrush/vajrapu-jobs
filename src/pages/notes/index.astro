@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const notes = await getCollection('notes');
+
+// Group by top-level folder; files at the vault root come first.
+const FOLDER_ORDER = ['', 'plan', 'playbooks', 'learning', 'setup'];
+const FOLDER_LABEL: Record<string, string> = {
+  '': 'Start here',
+  plan: 'Plan — CV, positioning, the day frame',
+  playbooks: 'Playbooks — applying & sourcing',
+  learning: 'Learning — curriculum & stories',
+  setup: 'Setup — the site itself',
+};
+const folderOf = (id: string) => (id.includes('/') ? id.split('/')[0] : '');
+const folders = [...new Set(notes.map((n) => folderOf(n.id)))].sort(
+  (a, b) => (FOLDER_ORDER.indexOf(a) + 99 * +(FOLDER_ORDER.indexOf(a) < 0)) - (FOLDER_ORDER.indexOf(b) + 99 * +(FOLDER_ORDER.indexOf(b) < 0)),
+);
+const inFolder = (f: string) =>
+  notes.filter((n) => folderOf(n.id) === f).sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title));
+---
+
+<Base title="Notes" wide>
+  <h1>The vault</h1>
+  <p class="muted" style="max-width:46em">
+    Markdown in <code>src/content/notes/</code>. Edit locally (Obsidian works on the folder), commit, push — live in about a
+    minute. Wikilinks like <code>[[setup/tallyprime-setup]]</code> work. New file = new note; folders are sections.
+  </p>
+
+  {folders.map((f) => (
+    <section>
+      <h2 class="section">{FOLDER_LABEL[f] ?? f}</h2>
+      <div class="grid">
+        {inFolder(f).map((n) => (
+          <a class="card tile" href={`/notes/${n.id}/`}>
+            <h3>{n.data.title}</h3>
+            {n.data.description && <p>{n.data.description}</p>}
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+</Base>
