@@ -10,7 +10,7 @@ export const SITE = {
 
   // Your GitHub repo URL. When set, every note gets an "Edit this page on GitHub"
   // link (works on the phone too). Leave '' to hide.
-  repoUrl: 'https://github.com/vajrapushankar-qrush/vajrapu_jobs',
+  repoUrl: 'https://github.com/vajrapushankar-qrush/vajrapu-jobs',
   branch: 'main',
 
   // How long the current plan runs (shown as "Day x of N").

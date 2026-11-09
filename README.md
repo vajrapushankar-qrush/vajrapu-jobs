@@ -15,11 +15,11 @@ The private hub for the remote-job sprint (target: a remote FDE / AI Architect r
 
 ## 1. Put it on GitHub
 
-1. Create a new **private** repository named `vajrapu_jobs`. No README/.gitignore — this folder has them.
-2. This folder is already a git repo with one commit; just point it and push:
+1. The repository: `vajrapushankar-qrush/vajrapu-jobs` (private).
+2. This folder is already a git repo; it points at that remote:
 
 ```bash
-git remote add origin https://github.com/vajrapushankar-qrush/vajrapu_jobs.git
+git remote add origin https://github.com/vajrapushankar-qrush/vajrapu-jobs.git
 git push -u origin main
 ```
 
@@ -34,7 +34,7 @@ git add package-lock.json && git commit -m "lockfile" && git push
 
 Workers & Pages → Create → connect the repo:
 
-- Build command `npm run build`, deploy command `npx wrangler deploy`, root `/`.
+- Connect `vajrapu-jobs` · build command `npm run build`, deploy command `npx wrangler deploy`, root `/`.
 - `wrangler.jsonc` holds the rest: static assets from `dist/`, `/api/*` runs `src/worker.js`.
 - Every push to `main` rebuilds and redeploys; a failed build leaves the previous version live.
 - Custom domain: the Worker's *Domains* tab (e.g. `jobs.vajrapu.com`).
@@ -83,7 +83,7 @@ Assembled without npm-registry access: the **Worker and Applications page are fu
 ## Structure
 
 ```
-vajrapu_jobs/
+vajrapu-jobs/
 ├── astro.config.mjs        Astro + wikilink plugin
 ├── wrangler.jsonc          Worker config: assets, API entry, D1, Access vars
 ├── public/
