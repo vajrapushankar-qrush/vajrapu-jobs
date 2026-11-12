@@ -1,13 +1,13 @@
-/* Vajrapu Jobs — global styles. Orchid/magenta on plum-tinted neutrals, deliberately unlike Ops' indigo and RAMS Loop's warm green (teal read too close to RAMS), so the three hubs are telling apart at a glance on the phone's home screen. The Applications page (src/crm.html) carries the same palette. */
+/* Vajrapu Jobs — global styles. Copper / burnt orange, the farthest hue from both Ops' indigo and RAMS Loop's green, so the three hubs are telling apart at a glance on the phone's home screen. The Applications page (src/crm.html) carries the same palette. */
 :root {
-  --bg:#f8f4f8;
+  --bg:#f7f5f3;
   --card:#ffffff;
-  --ink:#241a28;
-  --muted:#73647a;
-  --line:#e4dae6;
-  --soft:#f0e7f1;
-  --green:#a21caf;
-  --green-soft:#f6ddf6;
+  --ink:#26201b;
+  --muted:#78695c;
+  --line:#e4dcd2;
+  --soft:#f0e9e1;
+  --green:#c2410c;
+  --green-soft:#fbe0cf;
   --amber:#c47a16;
   --amber-soft:#f8e9d2;
   --blue:#2b6cb0;
@@ -19,14 +19,14 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:#191022;
-    --card:#231731;
-    --ink:#f1e9f4;
-    --muted:#ab9db6;
-    --line:#392b47;
-    --soft:#2a1d38;
-    --green:#df8bee;
-    --green-soft:#45194f;
+    --bg:#1b1410;
+    --card:#251c15;
+    --ink:#f3ece5;
+    --muted:#b1a294;
+    --line:#423428;
+    --soft:#322518;
+    --green:#f0915a;
+    --green-soft:#4a2410;
     --amber:#dba53d;
     --amber-soft:#3b3020;
     --blue:#7aa6e0;
