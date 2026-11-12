@@ -11,7 +11,7 @@ order: 2
 ## GIRIJA SHANKAR VAJRAPU
 
 **AI Architect / Forward Deployed Engineer — Enterprise Finance & SAP**
-Hyderabad, India (IST; overlaps UK/US hours) · +91 73963 13939 · vajrapushankar@gmail.com · LinkedIn: *(add URL)*
+Hyderabad, India (IST; overlaps UK/US hours) · +91 73963 13939 · vajrapushankar@gmail.com · [linkedin.com/in/vajrapushankar](https://www.linkedin.com/in/vajrapushankar/)
 
 15 years at one intersection: ~12 architecting SAP FICO / SAP Analytics Cloud FP&A systems for global enterprises, and 3 shipping production GenAI end to end as a solo founder. I sit with finance teams, read their ERP, and deploy AI workflows they actually adopt — discovery to production, alone or leading a pod.
 
@@ -56,4 +56,4 @@ Languages: English, Hindi, Telugu. Domains: global manufacturing, food, pharma; 
 
 ---
 
-**To fix before the .docx ships (answer in chat):** the LinkedIn URL; any number you'd state differently (team sizes, market counts, dates); whether the QuantumRush products should be named (TringRX, ShubhSankalpa) or described generically as above.
+**Still open (answer in chat and v2 regenerates):** any number you'd state differently (team sizes, market counts, dates); whether the QuantumRush products should be named (TringRX, ShubhSankalpa) or described generically as above.

@@ -55,7 +55,9 @@ A(Paragraph('GIRIJA SHANKAR VAJRAPU', S['name']))
 A(Spacer(1, 2))
 A(Paragraph('AI Architect / Forward Deployed Engineer — Enterprise Finance &amp; SAP', S['title']))
 A(Spacer(1, 4))
-A(Paragraph('Hyderabad, India — remote (IST; overlaps UK/US hours) · +91 73963 13939 · vajrapushankar@gmail.com', S['contact']))
+A(Paragraph('Hyderabad, India — remote (IST; overlaps UK/US hours) · +91 73963 13939 · '
+            '<link href="mailto:vajrapushankar@gmail.com">vajrapushankar@gmail.com</link> · '
+            '<link href="https://www.linkedin.com/in/vajrapushankar/">linkedin.com/in/vajrapushankar</link>', S['contact']))
 A(Spacer(1, 7))
 A(HRFlowable(width='100%', thickness=0.8, color=LINE))
 A(Spacer(1, 7))

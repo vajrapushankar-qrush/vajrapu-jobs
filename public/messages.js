@@ -6,7 +6,7 @@
 (function (root) {
   // linkedin: your public profile URL (fill it once; it goes into every message that wants it).
   // cvFile: the one standard CV's filename — the same file every time, never tailored per role.
-  var CONFIG = { name: 'Girija Shankar Vajrapu', shortName: 'Shankar', email: 'vajrapushankar@gmail.com', phone: '+91 73963 13939', linkedin: '', cvFile: 'GirijaShankar_Vajrapu_CV.pdf', whatsapp: '', firstLine: false };
+  var CONFIG = { name: 'Girija Shankar Vajrapu', shortName: 'Shankar', email: 'vajrapushankar@gmail.com', phone: '+91 73963 13939', linkedin: 'linkedin.com/in/vajrapushankar', cvFile: 'GirijaShankar_Vajrapu_CV.pdf', whatsapp: '', firstLine: false };
 
   function slug(s) { return String(s || '').toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
   /** "98765 43210" -> "919876543210", "07778 869402" -> "447778869402", "+44…"/"+91…" kept, for wa.me links. */

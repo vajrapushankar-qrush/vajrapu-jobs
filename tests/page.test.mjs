@@ -429,7 +429,7 @@ await page.waitForSelector('#modal.open');
 await page.click('#tabs [data-tab=send]');
 await page.click('button[data-copy=form]');
 const clip = await page.evaluate(() => navigator.clipboard.readText());
-check('application note filled from the record, paragraphs, signature, note left out', clip.startsWith('Hi Lee,\n\nI’ve applied for the Bolton role') && clip.includes('India-based, remote-ready') && !clip.includes('CHAS badge') && clip.includes('at Northgate Roofing & Cladding Ltd') && clip.endsWith('vajrapushankar@gmail.com') && !/\[WhatsApp\]/.test(clip), clip.slice(-80));
+check('application note filled from the record, paragraphs, signature, note left out', clip.startsWith('Hi Lee,\n\nI’ve applied for the Bolton role') && clip.includes('India-based, remote-ready') && !clip.includes('CHAS badge') && clip.includes('at Northgate Roofing & Cladding Ltd') && clip.endsWith('linkedin.com/in/vajrapushankar') && !/\[WhatsApp\]/.test(clip), clip.slice(-80));
 await page.click('button[data-copy=email]');
 check('copying from inside a closed details block does not open it', !(await page.locator('#d_email').evaluate((d) => d.open)));
 check('cold email has no WhatsApp placeholder either', !/\[WhatsApp\]/.test(await page.evaluate(() => navigator.clipboard.readText())));
