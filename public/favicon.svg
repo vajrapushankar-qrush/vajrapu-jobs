@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#c2410c"/>
-  <text x="32" y="46" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="40" font-weight="800" fill="#fdf2ea" text-anchor="middle">J</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <rect width="96" height="96" rx="21" fill="#c2410c"/>
+  <g transform="translate(9.6,7.68) scale(0.8)">
+    <path fill="#ffffff" d="M20 8 H76 L66 20 H30 Z"/>
+    <path fill="#ffffff" d="M15.5 11 L20 16.4 L15 24 L8 24 Z"/>
+    <path fill="#ffffff" d="M80.5 11 L76 16.4 L81 24 L88 24 Z"/>
+    <path fill="#ffffff" fill-rule="evenodd" d="M8 28 H88 L48 92 Z M33 28 L48 58 L63 28 Z"/>
+  </g>
 </svg>
