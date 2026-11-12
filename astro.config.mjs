@@ -29,7 +29,7 @@ function remarkWikilinks() {
 
 // Static site served by the Worker in src/worker.js (assets from dist/).
 export default defineConfig({
-  site: 'https://jobs.vajrapu.com',
+  site: 'https://fde.vajrapu.com',
   trailingSlash: 'ignore',
   markdown: {
     syntaxHighlight: false,

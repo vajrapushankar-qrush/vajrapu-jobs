@@ -37,7 +37,7 @@ Workers & Pages → Create → connect the repo:
 - Connect `vajrapu-jobs` · build command `npm run build`, deploy command `npx wrangler deploy`, root `/`.
 - `wrangler.jsonc` holds the rest: static assets from `dist/`, `/api/*` runs `src/worker.js`.
 - Every push to `main` rebuilds and redeploys; a failed build leaves the previous version live.
-- Custom domain: the Worker's *Domains* tab (e.g. `jobs.vajrapu.com`).
+- Custom domain: the Worker's *Domains* tab (`fde.vajrapu.com`).
 
 ## 3. Protect it, and switch on the database
 

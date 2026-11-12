@@ -27,11 +27,11 @@
   //   { "binding": "FILES", "bucket_name": "jobs-files" }
   // ],
 
-  // Custom domain: jobs.vajrapu.com. Option A (the proven RAMS/Ops flow): Worker -> Domains tab ->
-  // add jobs.vajrapu.com; Cloudflare creates the DNS record itself. Option B: uncomment the line
+  // Custom domain: fde.vajrapu.com. Option A (the proven RAMS/Ops flow): Worker -> Domains tab ->
+  // add fde.vajrapu.com; Cloudflare creates the DNS record itself. Option B: uncomment the line
   // below and the next deploy attaches it — but only if the build's token has zone rights; if the
   // deploy errors after uncommenting, re-comment and use Option A.
-  // "routes": [{ "pattern": "jobs.vajrapu.com", "custom_domain": true }],
+  // "routes": [{ "pattern": "fde.vajrapu.com", "custom_domain": true }],
 
   // This file is the only place settings live: a deploy replaces whatever is in the dashboard's
   // Variables list. None of these values is secret (the team domain and AUD are in the login URL).
