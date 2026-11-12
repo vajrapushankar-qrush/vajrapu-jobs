@@ -63,8 +63,11 @@ import { PLAN } from '../tasks.config';
     var wl = document.getElementById('weekline');
     var fmt = function (d) { return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }); };
 
-    if (diff < 0) {
-      dl.textContent = 'Setup · ' + -diff + (diff === -1 ? ' day' : ' days') + ' to Day 1';
+    if (diff === -1) {
+      dl.textContent = 'Day 0 · restart';
+      wl.textContent = fmt(today) + '. Applications only today; Day 1 starts tomorrow.';
+    } else if (diff < 0) {
+      dl.textContent = 'Setup · ' + -diff + ' days to Day 1';
       wl.textContent = fmt(today) + '. The sprint starts ' + fmt(start) + '.';
     } else {
       var day = diff + 1;

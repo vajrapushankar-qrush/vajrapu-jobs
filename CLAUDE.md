@@ -9,8 +9,11 @@ independent of both.
 ## The commitments (source of truth: `TARGETS` in `src/site.config.ts`)
 
 - **10 applications every weekday** — 5 from the scheduled shortlist (fires ~9:04 IST), 5 sourced live. P3 long shots capped at 2/day.
-- **First interview by 24 Nov 2026.**
+- **First interview by 27 Nov 2026.**
 - **Remote offer signed by 16 Jan 2027** — signed, not verbal.
+
+Restarted 12 Nov 2026 (week 1 slipped to a Remotion detour): 12 Nov = Day 0, Day 1 = Fri 13 Nov.
+The old d-prefixed task IDs are retired; the live plan uses r-prefixed IDs.
 
 If these look stale, trust `src/site.config.ts` over this file.
 

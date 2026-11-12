@@ -6,7 +6,8 @@ export const SITE = {
 
   // Day 1 of the 14-day sprint. Format YYYY-MM-DD. Everything on the Today and
   // Tasks pages counts from this date; change it and the whole plan shifts.
-  startDate: '2026-11-10',
+  // Restarted 12 Nov (the Remotion week): 12 Nov = Day 0 (5 applications only), 13 Nov = Day 1.
+  startDate: '2026-11-13',
 
   // Your GitHub repo URL. When set, every note gets an "Edit this page on GitHub"
   // link (works on the phone too). Leave '' to hide.
@@ -22,15 +23,15 @@ export const SITE = {
 export const TARGETS = {
   appsPerDay: 10,          // 5 from the scheduled shortlist + 5 sourced on LinkedIn/boards
   p3DailyCap: 2,           // location-restricted long shots never crowd out real ones
-  firstInterviewBy: '2026-11-24',
+  firstInterviewBy: '2026-11-27', // two weeks from the restarted Day 1
   offerBy: '2027-01-16',   // a signed remote offer ends the sprint
 };
 
-// Week focus, shown on the Today page. Week 1 = the week containing startDate.
+// Week focus, shown on the Today page. Week 1 = the week containing startDate (Fri 13 Nov).
 export const ROTATION = [
   { week: 1, focus: 'Volume + reposition', detail: '10 applications/day on the one standard CV; LinkedIn/Naukri repositioned to AI Architect / FDE' },
-  { week: 2, focus: 'Proof + interviews', detail: 'Public case story + demo repo live; referral asks; first interviews' },
-  { week: 3, focus: 'Convert + widen', detail: 'Interview loops; Day-14 retro decides what changes (one variable only)' },
+  { week: 2, focus: 'Proof + interviews', detail: 'Public case story + demo repo (with the Remotion video) live; referral asks; first interviews' },
+  { week: 3, focus: 'Convert', detail: 'Interview loops; Day-14 retro decides what changes (one variable only)' },
 ];
 
 // ---------------------------------------------------------------------------
