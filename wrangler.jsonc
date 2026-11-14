@@ -15,11 +15,11 @@
     "run_worker_first": true
   },
 
-  // The database for Applications and the task ticks. Create it (Storage & databases -> D1 ->
-  // create "jobs-db"), paste its Database ID here, and uncomment. Tables are created on first use.
-  // "d1_databases": [
-  //   { "binding": "DB", "database_name": "jobs-db", "database_id": "PASTE-DATABASE-ID-HERE" }
-  // ],
+  // The database for Applications and the task ticks. Tables are created on first use.
+  // The binding name must be exactly "DB" — that is what the API code looks for.
+  "d1_databases": [
+    { "binding": "DB", "database_name": "jobs-db", "database_id": "6aa421ef-e6f0-4653-b4a3-3ee8df33e55e" }
+  ],
 
   // Screenshots attached to an application's sources (optional; R2 bucket "jobs-files").
   // Harmless if the bucket does not exist yet: the page hides the attach button until FILES is bound.
