@@ -8,7 +8,7 @@ independent of both.
 
 ## The commitments (source of truth: `TARGETS` in `src/site.config.ts`)
 
-- **10 applications every weekday** — 5 from the scheduled shortlist (fires ~9:04 IST), 5 sourced live. P3 long shots capped at 2/day.
+- **5 applications every weekday** (sprint re-cut 15 Nov → 2 Dec: the shortlist's 5, fired ~9:04 IST; back to 10 on 3 Dec if the Ops retro says so). P3 long shots capped at 2/day.
 - **First interview by 27 Nov 2026.**
 - **Remote offer signed by 16 Jan 2027** — signed, not verbal.
 
@@ -19,12 +19,12 @@ If these look stale, trust `src/site.config.ts` over this file.
 
 ## The capacity frame (shared across all projects — plan inside it)
 
-Shankar runs six tracks in fixed daily blocks (max 9 working hours, family and calls come out of
-the same day): **Jobs 09:00–12:00 · Ops 12:30–14:30 · RAMS 14:30–16:30 · rotating bet 17:00–18:00**
-(ShubhSankalpa Mon, Zerollet Wed, TringRX Fri) · evenings only for booked recruiter calls
-(19:30–22:30 IST kept free for US/EU time zones).
+SPRINT FRAME (re-cut 15 Nov, until the 2 Dec Ops retro — master copy: vajrapu-hub src/sites.js):
+**Jobs 09:00–10:00 · Ops blitz 10:00–14:30 · RAMS 14:30–16:30 · Zerollet testing 17:00–19:00**
+(bets rotation paused) · evenings only for booked calls — recruiter or Ops prospect
+(19:30–22:30 IST kept free for US/EU time zones). Max 9 working hours; this frame is at the cap.
 
-THIS project's budget: **09:00–12:00 on weekdays, Block A only on Saturdays, rest on Sundays.**
+THIS project's budget: **09:00–10:00 on weekdays (Block A + C), ~45m Block A on Saturdays, rest on Sundays.**
 Plan tasks for this project inside that block only. If the backlog doesn't fit, cut scope or push
 days out — never assume extra hours and never absorb another project's block. The full frame and
 its rules: `src/content/notes/plan/day-frame.md`. The same header belongs in every other project

@@ -12,15 +12,20 @@ Six tracks — Jobs, Ops (Cash Flow Autopilot), RAMS, ShubhSankalpa, Zerollet, T
 
 ## The frame (weekdays)
 
+**SPRINT RE-CUT (15 Nov → 2 Dec):** the Ops cash blitz is the centrepiece; this is the frame
+until the 2 Dec retro. The pre-sprint frame (Jobs 3h, bets rotation) resumes only if that
+retro says so.
+
 | Block | Project | Notes |
 |---|---|---|
-| 09:00–12:00 | **Jobs — this sprint** | Blocks A→E. The shortlist lands ~9:04. |
+| 09:00–10:00 | **Jobs — sprint maintenance** | Block A + C only (5 shortlist apps + follow-ups). The shortlist lands ~9:04. |
+| 10:00–12:00 | **Ops · Blitz A — live selling** | Warm calls, CA calls, booked demos. No building. |
 | 12:00–12:30 | Lunch / family | Real break, not overflow. |
-| 12:30–14:30 | **Ops · Cash Flow Autopilot** | The 15 Nov first-client push. |
+| 12:30–14:30 | **Ops · Blitz B — close & deliver** | Proposals same day; n8n builds only for paid work. |
 | 14:30–16:30 | **RAMS loop** | Matches the UK-morning send window. |
 | 16:30–17:00 | Buffer | Calls, tea, the unexpected. |
-| 17:00–18:00 | **Rotating bet** | Mon ShubhSankalpa · Wed Zerollet · Fri TringRX. Tue/Thu: overflow or off. |
-| Evening | Booked calls only | 19:30–22:30 IST kept free for US/EU recruiters. No calls booked = off. |
+| 17:00–19:00 | **Zerollet testing** | Daily, 2h — the investor commitment. Tring manual tests ride fix-session waits. Bets rotation paused. |
+| Evening | Booked calls only | 19:30–22:30 IST — recruiter or Ops prospect. No calls booked = off. |
 
 ≈8 planned hours against a 9-hour ceiling; the buffer and lunch absorb life. **Saturday:** Jobs Block A + week review; one bet slot if fresh. **Sunday:** rest (the rest day is in the plan, so the streak survives it).
 
@@ -29,7 +34,7 @@ Six tracks — Jobs, Ops (Cash Flow Autopilot), RAMS, ShubhSankalpa, Zerollet, T
 1. **A project plans only inside its block.** If the backlog doesn't fit, cut scope or push days — never borrow another block.
 2. **The rotating bets ship increments.** One slot = one finished chunk (a test pass, one page, one SEO fix) — not "planning".
 3. **Holiday / travel mode:** Jobs Block A (45m) + RAMS inbox (15m). Everything else pauses without guilt; slipped tasks move to the next light day with a one-line marker (the ops "checkout" convention).
-4. **Re-cut at known dates, not daily.** Next re-cut: **15 Nov** (Ops client verdict) and the **Day-14 retro** here. If a client lands, Ops grows and a bet pauses; if a job lands, this block shrinks to interviews and the frame is re-drawn around the notice period.
+4. **Re-cut at known dates, not daily.** The 15 Nov re-cut happened (this sprint frame). Next: the **Day-14 retro** here (~26 Nov) and the **Ops Day-30 retro (2 Dec)**, which decides December: Ops ≥ ₹5L collected → Ops leads and Jobs stays at 1h; Ops < ₹2L → Jobs returns to the full 3h as the debt anchor. If a job lands, this block becomes interviews and the frame is re-drawn around the notice period.
 
 ## The paste-header (put this in every project's CLAUDE.md)
 

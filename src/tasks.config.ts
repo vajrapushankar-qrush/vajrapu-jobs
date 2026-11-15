@@ -29,13 +29,17 @@ export type DayPlan = {
 };
 
 // ---------- the daily application loop (weekdays) ----------
-// Same order every day, inside 09:00–12:00. Minimum viable day (travel, festival,
-// a client call that overruns) = Block A alone; the streak survives on that.
+// SPRINT RE-CUT (15 Nov): the jobs block is 09:00–10:00 until 2 Dec — the Ops cash
+// blitz owns the rest of the morning. The loop is Block A + Block C + Block E (1h);
+// Blocks B (LinkedIn sourcing) and D (learning) are suspended, not deleted — the
+// learning curriculum each day passed in `learn` is parked and resumes 3 Dec if the
+// Ops retro sends Jobs back to the full 3h. Minimum viable day = Block A alone.
 function loop(d: number, learn: string, learnSteps: string[], learnNote?: string): Task[] {
   const dd = String(d).padStart(2, '0');
+  void learn; void learnSteps; void learnNote; // parked till 3 Dec (see note above)
   return [
     {
-      id: `r${dd}-a`, title: 'Block A — Shortlist → apply 5', mins: 50, tag: 'apply',
+      id: `r${dd}-a`, title: 'Block A — Shortlist → apply 5', mins: 40, tag: 'apply',
       steps: [
         'Open the ~9:04 scheduled-task message in Claude (and the FDE_shortlist file it sends).',
         'For each of the 5 marked roles: search Applications by company first — already in? Skip to the next on the list.',
@@ -46,17 +50,7 @@ function loop(d: number, learn: string, learnSteps: string[], learnNote?: string
       note: '/notes/playbooks/application-playbook/',
     },
     {
-      id: `r${dd}-b`, title: 'Block B — LinkedIn & boards → apply 5', mins: 60, tag: 'apply',
-      steps: [
-        'Run the saved searches in order (note has all five), newest-first, posted ≤14 days.',
-        'Apply to 5 with the standard CV; log each like Block A.',
-        'For each application, send ONE connect note to the recruiter or hiring manager (copy "Opener" from the record).',
-        'Stop at 5. More browsing is procrastination with a clean conscience.',
-      ],
-      note: '/notes/playbooks/linkedin-sourcing/',
-    },
-    {
-      id: `r${dd}-c`, title: 'Block C — Inbox & follow-ups', mins: 20, tag: 'pipeline',
+      id: `r${dd}-c`, title: 'Block C — Inbox & follow-ups', mins: 15, tag: 'pipeline',
       steps: [
         'Read every reply (email, LinkedIn, Naukri, WhatsApp). Answer the same day, from the scripts.',
         'Anyone warm: offer two concrete slots ("tomorrow 7–9pm IST or the day after, same window"), never "sometime".',
@@ -65,15 +59,10 @@ function loop(d: number, learn: string, learnSteps: string[], learnNote?: string
       ],
     },
     {
-      id: `r${dd}-d`, title: `Block D — Learn: ${learn}`, mins: 45, tag: 'learn',
-      steps: learnSteps,
-      note: learnNote || '/notes/learning/learning-plan/',
-    },
-    {
       id: `r${dd}-e`, title: 'Block E — Log the four numbers & stop', mins: 5, tag: 'review',
       steps: [
         'Say today’s numbers out loud: applied / replies / interviews booked / offers.',
-        'Tick the blocks here. 12:00 = Ops time. Hard stop — the jobs block never eats the Ops block.',
+        'Tick the blocks here. 10:00 = Ops time. Hard stop — the jobs block never eats the Ops block.',
       ],
     },
   ];
@@ -133,22 +122,7 @@ export const PLAN: DayPlan[] = [
           'Clear every follow-up due; answer every reply.',
         ],
       },
-      {
-        id: 'r02-x1', title: 'Naukri + Instahyre repositioned, alerts on', mins: 20, tag: 'build',
-        steps: [
-          'Headline on both → match LinkedIn (AI Architect / FDE — enterprise finance & SAP).',
-          'Two alerts each: "forward deployed engineer" and "AI architect remote".',
-        ],
-      },
-      {
-        id: 'r02-x2', title: 'Message 3 SAP-staffing recruiters', mins: 25, tag: 'pipeline',
-        steps: [
-          'Find 3 recruiters who place SAP/AI architects remote-India (LinkedIn: "SAP recruiter" + remote).',
-          'Send the recruiter opener from the sourcing note; attach nothing yet.',
-          'Log each in Applications as its own record (Segment: Recruiter / referral).',
-        ],
-        note: '/notes/playbooks/linkedin-sourcing/',
-      },
+      { id: 'r02-m', title: 'Marker: Saturday slipped (jobs-db wiring + CRM build took the day). x1 → Day 4, x2 → Day 5.', tag: 'review' },
     ],
   },
   {
@@ -159,22 +133,40 @@ export const PLAN: DayPlan[] = [
     ],
   },
   {
-    day: 4, theme: 'Loop · full week begins',
+    day: 4, theme: 'Loop · sprint week begins (1h block)',
     tasks: [
       ...loop(4, 'Udemy course — module 1', [
         'Start the 20-hour course. 45 minutes, phone in the other room.',
         'One page of notes per module into /notes/learning/ (edit on GitHub from the phone works).',
       ]),
+      {
+        id: 'r02-x1', title: 'Naukri + Instahyre repositioned, alerts on (moved from Day 2)', mins: 20, tag: 'build',
+        steps: [
+          'One-off 20m overflow: run 09:00–10:20 today; Ops Blitz A starts 10:20, nothing else moves.',
+          'Headline on both → match LinkedIn (AI Architect / FDE — enterprise finance & SAP).',
+          'Two alerts each: "forward deployed engineer" and "AI architect remote".',
+        ],
+      },
     ],
   },
   {
-    day: 5, theme: 'Loop + the SAP AI stack',
+    day: 5, theme: 'Loop + recruiters (1h block)',
     tasks: [
       ...loop(5, 'SAP Business AI in one sitting', [
         'learning.sap.com → the free "Generative AI at SAP" / Joule journeys — skim for vocabulary, not completion.',
         'One sentence each: Joule, Joule Studio, Generative AI Hub, BTP AI Core, SAP Knowledge Graph.',
         'Write the 5 sentences into /notes/learning/ — interview currency for every P1 role.',
       ]),
+      {
+        id: 'r02-x2', title: 'Message 3 SAP-staffing recruiters (moved from Day 2)', mins: 25, tag: 'pipeline',
+        steps: [
+          'One-off 25m overflow: run 09:00–10:25 today.',
+          'Find 3 recruiters who place SAP/AI architects remote-India (LinkedIn: "SAP recruiter" + remote).',
+          'Send the recruiter opener from the sourcing note; attach nothing yet.',
+          'Log each in Applications as its own record (Segment: Recruiter / referral).',
+        ],
+        note: '/notes/playbooks/linkedin-sourcing/',
+      },
     ],
   },
   {
@@ -184,32 +176,26 @@ export const PLAN: DayPlan[] = [
         'One page, sanitized: "I built an AR-collections agent on QuickBooks + n8n that chases invoices and stops on payment."',
         'Structure: business problem → the system (sync, 4-level escalation, stop-on-payment, digest) → what it proves (production AI in a customer environment = FDE work).',
       ], '/notes/learning/fde-stories/'),
-      {
-        id: 'r06-x1', title: 'Post the dunning-engine case story on LinkedIn', mins: 30, tag: 'build',
-        steps: [
-          'Post the page from Block D; save the text into /notes/learning/fde-stories/ as Story #2.',
-          'If the Remotion cut of the demo is ready, attach it — a video post outperforms text.',
-        ],
-      },
     ],
   },
   {
-    day: 7, theme: 'Loop + referral hunt',
+    day: 7, theme: 'Loop (BNI morning — jobs shifts to the evening gap)',
     tasks: [
       ...loop(7, 'Udemy course — module 2', ['45 minutes of the course. Notes to the vault.']),
+    ],
+  },
+  {
+    day: 8, theme: 'Loop + referral hunt (1h + 30m one-off)',
+    tasks: [
       {
-        id: 'r07-x1', title: 'List 10 warm contacts at target companies, ask 3', mins: 30, tag: 'pipeline',
+        id: 'r07-x1', title: 'List 10 warm contacts at target companies, ask 3 (moved from Day 7 — BNI took that morning)', mins: 30, tag: 'pipeline',
         steps: [
+          'One-off overflow: run 09:00–10:30 today.',
           'Scan LinkedIn connections at: SAP, Databricks, consultancies (Wipro/TCS alumni count), AI startups.',
           'Ask 3 for a referral to a live posting you applied to this week — name the exact role.',
           'A referral turns a cold application warm; the highest-ROI 30 minutes of the week.',
         ],
       },
-    ],
-  },
-  {
-    day: 8, theme: 'Loop + agents/RAG/evals drill',
-    tasks: [
       ...loop(8, 'FDE technical talking points', [
         'Write crisp 4-sentence answers (you have built all of this): grounding an LLM in customer data (RAG)? keeping an agent safe in production (guardrails, human review)? knowing it works (evals)?',
         'Anchor every answer in a thing you shipped: the dunning engine, the LMS, the reminder workflows.',
@@ -218,11 +204,19 @@ export const PLAN: DayPlan[] = [
     ],
   },
   {
-    day: 9, theme: 'Saturday half · week-1 numbers + stories',
+    day: 9, theme: 'Saturday · numbers + stories (cap ~2h — the pipeline build shares the day)',
     tasks: [
       {
-        id: 'r09-a', title: 'Half loop — shortlist → apply 5, follow-ups', mins: 60, tag: 'apply',
+        id: 'r09-a', title: 'Half loop — shortlist → apply 5, follow-ups', mins: 45, tag: 'apply',
         steps: ['Block A as normal; clear follow-ups; answer replies.'],
+      },
+      {
+        id: 'r06-x1', title: 'Draft + post the dunning-engine case story on LinkedIn (moved from Day 6)', mins: 45, tag: 'build',
+        steps: [
+          'One page, sanitized: business problem → the system (sync, 4-level escalation, stop-on-payment, digest) → what it proves (production AI in a customer environment = FDE work).',
+          'Post it; save the text into /notes/learning/fde-stories/ as Story #2.',
+          'Attach the ep1 video — a video post outperforms text.',
+        ],
       },
       {
         id: 'r09-r', title: 'Week-1 review: the funnel so far', mins: 30, tag: 'review',
@@ -255,7 +249,7 @@ export const PLAN: DayPlan[] = [
     tasks: [
       ...loop(11, 'Udemy course — module 3', ['45 minutes of the course. Notes to the vault.']),
       {
-        id: 'r11-x1', title: 'Public demo repo: AR-collections agent (sanitized)', mins: 90, tag: 'build',
+        id: 'r11-x1', title: 'Public demo repo: AR-collections agent (parked — build it the day an interview books, else 3 Dec)', mins: 90, tag: 'build',
         steps: [
           'New public GitHub repo: README with the architecture (QBO → n8n → escalation engine → stop-on-payment), sanitized workflow JSON, the 4 email templates.',
           'Embed the Remotion-produced demo video in the README — this is where last week’s detour becomes an asset.',
