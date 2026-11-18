@@ -133,12 +133,27 @@ export const PLAN: DayPlan[] = [
     ],
   },
   {
-    day: 4, theme: 'Loop · sprint week begins (1h block)',
+    day: 4, theme: 'Surgery (unplanned)',
     tasks: [
-      ...loop(4, 'Udemy course — module 1', [
-        'Start the 20-hour course. 45 minutes, phone in the other room.',
-        'One page of notes per module into /notes/learning/ (edit on GitHub from the phone works).',
-      ]),
+      { id: 'r04-m', title: 'Marker: urgent surgery — down the whole day. A medical day, not a slip.', tag: 'review' },
+    ],
+  },
+  {
+    day: 5, theme: 'Recovery day 1',
+    tasks: [
+      { id: 'r05-m', title: 'Marker: recovery. Naukri/Instahyre reposition → Day 7, SAP recruiters → Day 9.', tag: 'review' },
+    ],
+  },
+  {
+    day: 6, theme: 'Recovery day 2',
+    tasks: [
+      { id: 'r06-m', title: 'Marker: recovery. Restart Day 7; the streak survives on these markers.', tag: 'review' },
+    ],
+  },
+  {
+    day: 7, theme: 'Loop · Restart (post-op)',
+    tasks: [
+      ...loop(7, 'Udemy course — module 2', ['45 minutes of the course. Notes to the vault.']),
       {
         id: 'r02-x1', title: 'Naukri + Instahyre repositioned, alerts on (moved from Day 2)', mins: 20, tag: 'build',
         steps: [
@@ -147,41 +162,6 @@ export const PLAN: DayPlan[] = [
           'Two alerts each: "forward deployed engineer" and "AI architect remote".',
         ],
       },
-    ],
-  },
-  {
-    day: 5, theme: 'Loop + recruiters (1h block)',
-    tasks: [
-      ...loop(5, 'SAP Business AI in one sitting', [
-        'learning.sap.com → the free "Generative AI at SAP" / Joule journeys — skim for vocabulary, not completion.',
-        'One sentence each: Joule, Joule Studio, Generative AI Hub, BTP AI Core, SAP Knowledge Graph.',
-        'Write the 5 sentences into /notes/learning/ — interview currency for every P1 role.',
-      ]),
-      {
-        id: 'r02-x2', title: 'Message 3 SAP-staffing recruiters (moved from Day 2)', mins: 25, tag: 'pipeline',
-        steps: [
-          'One-off 25m overflow: run 09:00–10:25 today.',
-          'Find 3 recruiters who place SAP/AI architects remote-India (LinkedIn: "SAP recruiter" + remote).',
-          'Send the recruiter opener from the sourcing note; attach nothing yet.',
-          'Log each in Applications as its own record (Segment: Recruiter / referral).',
-        ],
-        note: '/notes/playbooks/linkedin-sourcing/',
-      },
-    ],
-  },
-  {
-    day: 6, theme: 'Loop + first public proof',
-    tasks: [
-      ...loop(6, 'draft the case story', [
-        'One page, sanitized: "I built an AR-collections agent on QuickBooks + n8n that chases invoices and stops on payment."',
-        'Structure: business problem → the system (sync, 4-level escalation, stop-on-payment, digest) → what it proves (production AI in a customer environment = FDE work).',
-      ], '/notes/learning/fde-stories/'),
-    ],
-  },
-  {
-    day: 7, theme: 'Loop (BNI morning — jobs shifts to the evening gap)',
-    tasks: [
-      ...loop(7, 'Udemy course — module 2', ['45 minutes of the course. Notes to the vault.']),
     ],
   },
   {
@@ -227,6 +207,15 @@ export const PLAN: DayPlan[] = [
         ],
       },
       {
+        id: 'r02-x2', title: 'Message 3 SAP-staffing recruiters (moved from Day 2)', mins: 25, tag: 'pipeline',
+        steps: [
+          'Find 3 recruiters who place SAP/AI architects remote-India (LinkedIn: "SAP recruiter" + remote).',
+          'Send the recruiter opener from the sourcing note; attach nothing yet.',
+          'Log each in Applications as its own record (Segment: Recruiter / referral).',
+        ],
+        note: '/notes/playbooks/linkedin-sourcing/',
+      },
+      {
         id: 'r09-x1', title: 'Draft STAR stories #1–2', mins: 45, tag: 'learn',
         steps: [
           'Story #1: the 14-market SAC FP&A transformation — situation, task, action, result with numbers.',
@@ -240,8 +229,8 @@ export const PLAN: DayPlan[] = [
   {
     day: 10, theme: 'Sunday · rest',
     tasks: [
-      { id: 'r10-1', title: 'Rest day — tick this and close the laptop', mins: 5, tag: 'review',
-        steps: ['Optional 15 minutes: clear any On-hold records whose retry date passed.'] },
+      { id: 'r10-1', title: 'Weekend-ON Sunday — Block A if the morning allows, then close the laptop', mins: 5, tag: 'review',
+        steps: ['Weekends are ON until 2 Dec: a 45-minute Block A counts double on a Sunday, but the marker alone still keeps the streak.', 'Optional 15 minutes: clear any On-hold records whose retry date passed.'] },
     ],
   },
   {
