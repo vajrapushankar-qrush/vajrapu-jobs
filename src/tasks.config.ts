@@ -16,6 +16,9 @@
 //   card's first step is a physical action; ignition/marking lines bookend the block's first
 //   and last card; lifetime counters only — no streaks, in UI or prose.
 
+import { SITE } from './site.config';
+import { SHORTLIST, SHORTLIST_DATE } from './shortlist.config';
+
 export type Task = {
   id: string;
   title: string;
@@ -307,4 +310,28 @@ export function dayDate(startDate: string, day: number): string {
 export function dayLabel(startDate: string, day: number): string {
   const d = new Date(dayDate(startDate, day) + 'T00:00:00Z');
   return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+}
+
+// ---------- the sourced shortlist (shortlist.config.ts — written daily by the scheduled task) ----------
+// Spliced into the matching plan day as ordinary tasks, so the Today page, the full plan,
+// today.json/the hub and the ticks all carry the day's five roles with no extra plumbing.
+// Each role becomes one card: posting link first (a step that IS a url renders as a link),
+// then the 4-sentence note — the one place tailoring lives; the CV stays the standard file.
+// If no plan day matches SHORTLIST_DATE (a Sunday, a gap), the roles simply stay unseen.
+for (const d of PLAN) {
+  if (!SHORTLIST_DATE || dayDate(SITE.startDate, d.day) !== SHORTLIST_DATE) continue;
+  for (const r of SHORTLIST) {
+    d.tasks.push({
+      id: r.id,
+      title: `Apply: ${r.role} @ ${r.company} (${r.segment} · ${r.direct ? 'direct' : 'agency'})`,
+      mins: 8,
+      tag: 'apply',
+      steps: [
+        r.url,
+        `Paste this note, sanity-check the company name, send: ${r.note}`,
+        'Attach the standard CV (the PDF tile on the Today page) — one file, never edited per role.',
+        'Log it in Applications: status Applied, segment, posting URL, applied-on today.',
+      ],
+    });
+  }
 }

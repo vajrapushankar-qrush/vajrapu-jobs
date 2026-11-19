@@ -11,6 +11,12 @@ interface Props {
 const { d, hidden = false } = Astro.props;
 const date = dayDate(SITE.startDate, d.day);
 const label = dayLabel(SITE.startDate, d.day);
+
+/** A step that starts with a URL (the shortlist's posting links) splits into [url, rest]. */
+function stepLink(s: string): [string, string] | null {
+  const m = s.match(/^(https?:\/\/\S+)(.*)$/);
+  return m ? [m[1], m[2]] : null;
+}
 ---
 
 <section class="day card" id={`d${String(d.day).padStart(2, '0')}`} data-day={d.day} data-date={date} hidden={hidden}>
@@ -31,7 +37,25 @@ const label = dayLabel(SITE.startDate, d.day);
           {(t.steps?.length || t.note) && (
             <details class="steps">
               <summary>Steps</summary>
-              {t.steps?.length ? <ol>{t.steps.map((s) => <li>{s}</li>)}</ol> : null}
+              {t.steps?.length ? (
+                <ol>
+                  {t.steps.map((s) => {
+                    const link = stepLink(s);
+                    return (
+                      <li>
+                        {link ? (
+                          <>
+                            <a href={link[0]} target="_blank" rel="noopener">{link[0]}</a>
+                            {link[1]}
+                          </>
+                        ) : (
+                          s
+                        )}
+                      </li>
+                    );
+                  })}
+                </ol>
+              ) : null}
               {t.note && (
                 <p class="notelink">
                   <a href={t.note}>Full guide →</a>

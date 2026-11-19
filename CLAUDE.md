@@ -60,7 +60,12 @@ lifetime counters only — no streaks, in UI or prose.
 - Message wording: `public/messages.js` · segments: `TRADES` in `src/api/_lib.js`
 - KPI strip: `public/kpis.js` + `TARGETS` in `src/site.config.ts` · day frame: `FRAME` there too
 - The scheduled shortlist: the "Daily remote FDE job sourcing (5+/day)" scheduled task in
-  Claude (fires ~03:34 UTC daily); its prompt carries the candidate profile and bucket rules.
+  Claude; its prompt carries the candidate profile and bucket rules. It writes the day's five
+  roles into `src/shortlist.config.ts` (ids `rs-YYYYMMDD-N`, posting URL + the 4-sentence note
+  per role) and pushes; `tasks.config.ts` splices them into the matching plan day, so they
+  show as apply-cards on Today, the full plan and the hub. That file is bot-owned — hand edits
+  are lost on the next morning's push; curated tasks stay in `tasks.config.ts`. The note is
+  the ONE place tailoring lives (hard rule #1: the CV is never tailored per role).
 - Deploy: push to `main` → Cloudflare builds (`npm run build`) and deploys (`wrangler.jsonc`)
 
 ## Field meanings (the API keeps the old column names — labels changed, columns didn't)
