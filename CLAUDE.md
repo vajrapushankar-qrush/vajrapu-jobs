@@ -30,6 +30,16 @@ days out — never assume extra hours and never absorb another project's block. 
 its rules: `src/content/notes/plan/day-frame.md`. The same header belongs in every other project
 repo's CLAUDE.md with its own block filled in.
 
+## Before any replan — HQ first (guardrail)
+
+Plans and goals are owned one level up. Before changing any plan in this repo — including in a
+session started directly here — read the hub's CLAUDE.md (`vajrapushankar-qrush/vajrapu-hub`,
+hub.vajrapu.com): the capacity frame above, the checkpoints and the **sprint protocol** live
+there as master copies. No hub context in the session → fetch that repo or ask for the file;
+never replan blind. Cards in `tasks.config.ts` follow that protocol: one task + its first
+physical action per card, the apply/send card first, ignition/marking bookends on the block,
+lifetime counters only — no streaks, in UI or prose.
+
 ## Hard rules of the sprint
 
 1. **One standard CV** (`GirijaShankar_Vajrapu_CV.pdf`, generated from

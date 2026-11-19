@@ -11,7 +11,10 @@
 // - IDs are stable ("r07-c"): renaming a task keeps its tick; deleting one orphans its tick
 //   harmlessly. Don't reuse an old ID for a new task.
 // - Day numbers count from SITE.startDate in site.config.ts (Day 1 = that date; day 0 = the day before).
-// - The whole sprint lives inside the 09:00–12:00 block. Three hours, then Ops. Never more.
+// - The whole sprint lives inside the jobs block (09:00–10:00 since the 15 Nov re-cut). Never more.
+// - Sprint protocol (master copy: vajrapu-hub CLAUDE.md): money card (apply/send) first; each
+//   card's first step is a physical action; ignition/marking lines bookend the block's first
+//   and last card; lifetime counters only — no streaks, in UI or prose.
 
 export type Task = {
   id: string;
@@ -41,6 +44,7 @@ function loop(d: number, learn: string, learnSteps: string[], learnNote?: string
     {
       id: `r${dd}-a`, title: 'Block A — Shortlist → apply 5', mins: 40, tag: 'apply',
       steps: [
+        'Ignition, out loud, timer on: "Thank you Anjaneya for showing me that every sprint is a seva, and thank you for giving me this opportunity."',
         'Open the ~9:04 scheduled-task message in Claude (and the FDE_shortlist file it sends).',
         'For each of the 5 marked roles: search Applications by company first — already in? Skip to the next on the list.',
         'Apply with the ONE standard CV + the application note from the record’s Send tab. 10 minutes per application, hard cap.',
@@ -62,7 +66,8 @@ function loop(d: number, learn: string, learnSteps: string[], learnNote?: string
       id: `r${dd}-e`, title: 'Block E — Log the four numbers & stop', mins: 5, tag: 'review',
       steps: [
         'Say today’s numbers out loud: applied / replies / interviews booked / offers.',
-        'Tick the blocks here. 10:00 = Ops time. Hard stop — the jobs block never eats the Ops block.',
+        'Marking, out loud: "Thank you Anjaneya — this seva is done from steadiness, and thank you for the momentum."',
+        'Tick the blocks here, one coin in the jar. 10:00 = Ops time. Hard stop — the jobs block never eats the Ops block.',
       ],
     },
   ];
@@ -167,20 +172,20 @@ export const PLAN: DayPlan[] = [
   {
     day: 8, theme: 'Loop + referral hunt (1h + 30m one-off)',
     tasks: [
-      {
-        id: 'r07-x1', title: 'List 10 warm contacts at target companies, ask 3 (moved from Day 7 — BNI took that morning)', mins: 30, tag: 'pipeline',
-        steps: [
-          'One-off overflow: run 09:00–10:30 today.',
-          'Scan LinkedIn connections at: SAP, Databricks, consultancies (Wipro/TCS alumni count), AI startups.',
-          'Ask 3 for a referral to a live posting you applied to this week — name the exact role.',
-          'A referral turns a cold application warm; the highest-ROI 30 minutes of the week.',
-        ],
-      },
       ...loop(8, 'FDE technical talking points', [
         'Write crisp 4-sentence answers (you have built all of this): grounding an LLM in customer data (RAG)? keeping an agent safe in production (guardrails, human review)? knowing it works (evals)?',
         'Anchor every answer in a thing you shipped: the dunning engine, the LMS, the reminder workflows.',
         'Into /notes/learning/fde-stories/ under "Technical".',
       ], '/notes/learning/fde-stories/'),
+      {
+        id: 'r07-x1', title: 'List 10 warm contacts at target companies, ask 3 (moved from Day 7 — BNI took that morning)', mins: 30, tag: 'pipeline',
+        steps: [
+          'One-off overflow after the loop — the jobs block stretches to 10:30 today; Ops Blitz A starts 10:30, nothing else moves.',
+          'Scan LinkedIn connections at: SAP, Databricks, consultancies (Wipro/TCS alumni count), AI startups.',
+          'Ask 3 for a referral to a live posting you applied to this week — name the exact role.',
+          'A referral turns a cold application warm; the highest-ROI 30 minutes of the week.',
+        ],
+      },
     ],
   },
   {
@@ -230,7 +235,7 @@ export const PLAN: DayPlan[] = [
     day: 10, theme: 'Sunday · rest',
     tasks: [
       { id: 'r10-1', title: 'Weekend-ON Sunday — Block A if the morning allows, then close the laptop', mins: 5, tag: 'review',
-        steps: ['Weekends are ON until 2 Dec: a 45-minute Block A counts double on a Sunday, but the marker alone still keeps the streak.', 'Optional 15 minutes: clear any On-hold records whose retry date passed.'] },
+        steps: ['Weekends are ON until 2 Dec: a 45-minute Block A counts double on a Sunday, but the marker alone still keeps the record honest.', 'Optional 15 minutes: clear any On-hold records whose retry date passed.'] },
     ],
   },
   {
