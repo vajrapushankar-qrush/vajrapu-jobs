@@ -6,6 +6,8 @@ order: 2
 
 > **The rule:** this CV goes to every role unchanged. Per-role tailoring lives in the 4-sentence application note (the record's Send tab), never here. Corrections go to Claude in chat → the .docx + PDF regenerate → the filename never changes: `GirijaShankar_Vajrapu_CV.pdf`.
 
+**[⬇ Download the PDF](/GirijaShankar_Vajrapu_CV.pdf)** — regenerated on every push; the same file, every role.
+
 ---
 
 ## GIRIJA SHANKAR VAJRAPU
