@@ -66,6 +66,11 @@ lifetime counters only — no streaks, in UI or prose.
   show as apply-cards on Today, the full plan and the hub. That file is bot-owned — hand edits
   are lost on the next morning's push; curated tasks stay in `tasks.config.ts`. The note is
   the ONE place tailoring lives (hard rule #1: the CV is never tailored per role).
+  `src/shortlist-history.json` is the bot's append-only memory: every shortlisted role lands
+  there, applied ones get status "applied", and the bot never re-lists a url or company+role
+  that appears in it — that file is why the same job doesn't come back three days running.
+  The task must run from an environment that has this repo with push access; a run that
+  reports "push refused / not authorized" means the task needs recreating from such a session.
 - Deploy: push to `main` → Cloudflare builds (`npm run build`) and deploys (`wrangler.jsonc`)
 
 ## Field meanings (the API keeps the old column names — labels changed, columns didn't)

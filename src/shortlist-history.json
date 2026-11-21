@@ -1,0 +1,12 @@
+{
+  "_comment": "The sourcing bot's memory. Every role it shortlists is appended here (status 'shortlisted'); roles Shankar reports applying to get status 'applied'. The bot MUST read this before finalizing a day's five and never re-list a url (or company+role pair) that appears here. Bot-owned like shortlist.config.ts, but append-only: entries are never removed or rewritten. Not imported by the build — pure ledger.",
+  "roles": [
+    {
+      "date": "2026-11-19",
+      "company": "Peakflo",
+      "role": "Forward Deployed Engineer (FDE)",
+      "url": "https://www.ycombinator.com/companies/peakflo/jobs/vIrPzMj-forward-deployed-engineer-fde-india-remote",
+      "status": "applied"
+    }
+  ]
+}
