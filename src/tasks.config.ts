@@ -286,6 +286,7 @@ export const PLAN: DayPlan[] = [
         '#3: TCS — pharma budgeting/consolidation war story. #4: the RAMS 2-week sprint. #5: shipping the LMS/SaaS solo.',
         'Read all five out loud once. That is interview prep most candidates never do.',
       ], '/notes/learning/fde-stories/'),
+      { id: 'r14-iv', title: 'Marker: FIRST INTERVIEW LANDED — SAP CO, 25 Nov (target was 27 Nov). 26–30 Nov = round-2 prep window; Block A optional, the shortlist cards keep landing daily for delegation; the retro below runs on 1 Dec with the prep verdict already made (grid: interviews → prep).', tag: 'review' },
       {
         id: 'r14-x1', title: 'Day-14 retro: numbers, one change, next 14 days', mins: 60, tag: 'review',
         steps: [
